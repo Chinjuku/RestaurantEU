@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ManagerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +15,21 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 // Route::get('/login', [AuthController::class, 'loginForm']);
-Route::get('/register', [AuthController::class, 'registerForm'])->name('register.create');
-Route::post('/register', [AuthController::class, 'register']);
+// Route::get('/register', [AuthenController::class, 'registerForm'])->name('register.create');
+// Route::post('/register', [AuthenController::class, 'register']);
+
+Auth::routes();
+
+
+Route::get('/', [HomeController::class, 'index'])->name('guest');
+// Managers
+Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home')->middleware('is_manager');
+Route::get('/manager/managemenu', [ManagerController::class, 'managemenuPage'])->name('manager.menu')->middleware('is_manager');
+
+
+Route::get('/chef/home', [HomeController::class, 'chefHome'])->name('chef.home')->middleware('is_chef');
+Route::get('/cashier/home', [HomeController::class, 'cashierHome'])->name('cashier.home')->middleware('is_cashier');
+Route::get('/waiter/home', [HomeController::class, 'waiterHome'])->name('waiter.home')->middleware('is_waiter');
+// Route::get('/', [HomeController::class, 'welcome']);
+
