@@ -31,7 +31,11 @@ class CustomerController extends Controller
             'people_num' => $request->people_num,
             'phonenum' => $request->phone_num,
             'time' => $request->time,
+            'end_time' => date('H:i:s', strtotime($request->time) + 15 * 60)
         ]);
         // return redirect()->route('login'); // รอเชื่อมหน้าหลังจอง
+    }
+    function tablepage(Request $request, $id) {
+        //
     }
 }

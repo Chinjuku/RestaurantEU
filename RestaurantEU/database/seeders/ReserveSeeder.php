@@ -18,12 +18,13 @@ class ReserveSeeder extends Seeder
         $faker = Faker::create();
 
         // Generate 10 fake reservations
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             DB::table('reservation')->insert([
                 'name' => $faker->name,
                 'people_num' => $faker->numberBetween(1, 10),
                 'phonenum' => $faker->phoneNumber,
                 'time' => $faker->time(),
+                // 'end_time' => $faker->time()+15
             ]);
         }
     }

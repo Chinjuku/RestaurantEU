@@ -25,6 +25,6 @@ class EmployeeSeeder extends Seeder
                 'roles' => $faker->randomElement(['manager', 'chef', 'cashier', 'waiter']),
                 'createdAt' => $faker->date(),
             ]);
-        } 
+        }
     }
 }

@@ -50,7 +50,11 @@ Route::get('/cashier/home', [HomeController::class, 'cashierHome'])->name('cashi
 Route::get('/waiter/home', [HomeController::class, 'waiterHome'])->name('waiter.home')->middleware('is_waiter');
 
 // Customer
+// Reservation
 Route::get('/customer/reservation', [CustomerController::class, 'reservation'])->name('customer.home');
 Route::post('/customer/reserving', [CustomerController::class, 'reserving'])->name('cus.reserve');
+// Order menu
+Route::get('customer/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
+// Route::get('customer/{id}/order/{id}', [CustomerController::class, 'order']);
 // Route::get('/', [HomeController::class, 'welcome']);
 

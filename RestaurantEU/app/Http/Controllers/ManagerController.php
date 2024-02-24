@@ -14,38 +14,42 @@ class ManagerController extends Controller
     function addmenu(Request $request) {
         $request->validate(
             [
-            //     'name' => 'required|min:2',
-            //     'lastname' => 'required|min:2',
-            //     'phone' => 'required',
-            //     'roles' => 'required',
-            // ],
-            // [
-            //     'firstname.required' => 'กรุณากรอกชื่อจริงพนักงาน',
-            //     'lastname.required' => 'กรุณากรอกนามสกุลพนักงาน',
-            //     'phone.required' => 'กรุณากรอกชื่อจริงพนักงาน',
-            //     'roles.required' => 'กรุณากรอกชื่อจริงพนักงาน'
+                'menu_name' => 'required|min:2',
+                'price' => 'required|min:2',
+                'menu_img' => 'required',
+                'detail' => 'required|min:2',
+                'category_id' => 'required',
+            ],
+            [
+                'menu_name.required' => 'กรุณากรอกเมนูอาหาร',
+                'price.required' => 'กรุณากรอกราคา',
+                'menu_img.required' => 'กรุณาใส่ภาพอาหาร',
+                'detail.required' => 'กรุณากรอกรายละเอียดอาหาร',
+                'category_id' => 'กรุณาเลือกหมวดหมู่อาหาร'
             ]);
         DB::table('menu')->insert([
-            'name' => $request->name,
+            'menu_name' => $request->name,
             'price' => $request->price,
-            'description' => $request->description,
-            'image' => $request->image,
+            'menu_img' => $request->menu_img,
+            'detail' => $request->detail,
+            'category_id' => $request->category_id
         ]);
         return redirect()->route('manager.menu')->with('success', 'เพิ่มเมนูใหม่เรียบร้อยจ้า');
     }
     function updatemenu(Request $request, $id) {
         DB::table('menu')->where('menu_id', $id)->first();
         $update = [
-            'name' => $request->name,
+            'menu_name' => $request->name,
             'price' => $request->price,
-            'description' => $request->description,
-            'image' => $request->image,
+            'menu_img' => $request->menu_img,
+            'detail' => $request->detail,
+            'category_id' => $request->category_id
         ];
         DB::table('menu')->where('id', $id)->update($update);
     }
     function deletemenu($id) {
         DB::table('menu')->where('id', $id)->delete();
-        return redirect()->route('manager.home')->with('success', 'ลบพนักงานเรียบร้อยจ้า');
+        return redirect()->route('manager.home')->with('success', 'ลบเมนูเรียบร้อยจ้า');
     }
 
     function addEmployee(Request $request) {
