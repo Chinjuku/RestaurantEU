@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -11,10 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth'); //เพื่มความปลอดภัยให้web
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,12 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('guest');
+        return view('auth/login');
     }
-
     public function managerHome()
     {
-        return view('manager/home');
+        $employees = DB::table('employee')->get();
+        return view('manager/dashboard', compact('employees'));
     }
 
     public function chefHome()
@@ -38,11 +39,13 @@ class HomeController extends Controller
 
     public function waiterHome()
     {
-        return view('waiter/home');
+        $reservations = DB::table('reservation')->get();
+        return view('waiter/home', compact('reservations'));
     }
-    
+
     public function cashierHome()
     {
-        return view('cashier/home');
+        $reservations = DB::table('reservation')->get();
+        return view('cashier/home', compact('reservations'));
     }
 }

@@ -2,23 +2,23 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                    Hello, Cashier
-                </div>
-            </div>
-        </div>
-    </div>
+    <table>
+        <tr>
+            <th>reserveid</th>
+            <th>name</th>
+            <th>people</th>
+            <th>phonenum</th>
+            <th>time</th>
+        </tr>
+        @foreach($reservations as $getreserve)
+            <tr>
+                <td>{{$getreserve->reserveid}}</td>
+                <td>{{$getreserve->name}}</td>
+                <td>{{$getreserve->people_num}}</td>
+                <td>{{$getreserve->phonenum}}</td>
+                <td>{{$getreserve->time}}</td>
+            </tr>
+        @endforeach
+    </table>
 </div>
 @endsection

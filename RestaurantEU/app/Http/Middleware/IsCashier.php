@@ -18,6 +18,6 @@ class IsCashier
         if (auth()->check() && auth()->user()->roles == "cashier") {
             return $next($request);
         }
-        return redirect()->route('guest')->with('error', 'you cannot access to manager page');
+        return redirect()->route('guest')->with('error', 'คุณไม่ได้รับสิทธ์การเข้าถึงหน้านี้');
     }
 }
