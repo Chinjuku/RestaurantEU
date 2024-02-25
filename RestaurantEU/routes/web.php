@@ -48,13 +48,16 @@ Route::get('/cashier/home', [HomeController::class, 'cashierHome'])->name('cashi
 
 // Waiter
 Route::get('/waiter/home', [HomeController::class, 'waiterHome'])->name('waiter.home')->middleware('is_waiter');
+Route::post('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->name('waiter.served')->middleware('is_waiter');
 
 // Customer
 // Reservation
 Route::get('/customer/reservation', [CustomerController::class, 'reservation'])->name('customer.home');
 Route::post('/customer/reserving', [CustomerController::class, 'reserving'])->name('cus.reserve');
 // Order menu
-Route::get('customer/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
-// Route::get('customer/{id}/order/{id}', [CustomerController::class, 'order']);
+Route::get('customer/table/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
 // Route::get('/', [HomeController::class, 'welcome']);
 
+Route::fallback( function() {
+    return view('404');
+});

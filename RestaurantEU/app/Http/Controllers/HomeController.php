@@ -34,18 +34,17 @@ class HomeController extends Controller
 
     public function chefHome()
     {
-        return view('chef/home');
+        $getorder = DB::table('order')->get();
+        return view('chef/home', compact('getorder'));
     }
 
     public function waiterHome()
     {
-        $reservations = DB::table('reservation')->get();
-        return view('waiter/home', compact('reservations'));
+        return view('waiter/home');
     }
 
     public function cashierHome()
     {
-        $reservations = DB::table('reservation')->get();
-        return view('cashier/home', compact('reservations'));
+        return view('cashier/home');
     }
 }

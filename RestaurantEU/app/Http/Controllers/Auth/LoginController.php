@@ -44,15 +44,16 @@ class LoginController extends Controller
 
         $this->validate($request, 
         [
-            'email' =>'required|email',
+            'name' =>'required|min:3',
             'password' => 'required'
         ], 
         [
-            'email.required' => 'กรุณากรอกอีเมลของคุณ',
+            'name.required' => 'กรุณากรอกชื่อผู้ใช้ของคุณ',
+            'name.min' => 'กรุณากรอกชื่อผู้ใช้อย่างต่ำ 3 ตัวอักษร',
             'password.required' => 'กรุณากรอกรหัสผ่านของคุณ'
         ]);
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
+        if (auth()->attempt(array('name' => $input['name'], 'password' => $input['password']))){
             if (auth()->user()->roles == 'manager') {
                 return redirect()->route('manager.home');
             } 
