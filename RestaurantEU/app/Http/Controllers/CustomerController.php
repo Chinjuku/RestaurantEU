@@ -50,22 +50,22 @@ class CustomerController extends Controller
         DB::table('table')->where('table_id', $id)->update($data);
         return view('customer/home');
     }
-    public function storemenu(Request $request)
-    {
-        $id = Route::current()->parameter('id');
-        $order = DB::table('order')->insert([
-            'table_id' => $id,
-            'order_time' => time()
-        ]);
-        $orderdetails = DB::table('orderdetails');
-        foreach ($request->menus as $menu) {
-            $order->$orderdetails->create([
-                'menu_id' => $menu['id'],
-                'quantity' => $menu['quantity'],
-                'order_status' => 'in-line',
-            ]);
-        }
-        return response()->json(['message' => 'Order created successfully'], 201);
-    }
+    // public function storemenu(Request $request)
+    // {
+    //     $id = Route::current()->parameter('id');
+    //     $order = DB::table('order')->insert([
+    //         'table_id' => $id,
+    //         'order_time' => time()
+    //     ]);
+    //     $orderdetails = DB::table('orderdetails');
+    //     foreach ($request->menus as $menu) {
+    //         $order->$orderdetails->create([
+    //             'menu_id' => $menu['id'],
+    //             'quantity' => $menu['quantity'],
+    //             'order_status' => 'in-line',
+    //         ]);
+    //     }
+    //     return response()->json(['message' => 'Order created successfully'], 201);
+    // }
 
 }

@@ -52,7 +52,7 @@ Route::post('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->
 
 // Customer
 // Reservation
-Route::get('/customer/reservation', [CustomerController::class, 'reservation'])->name('customer.home');
+Route::get('/customer/reservation', [CustomerController::class, 'reservation'])->name('reservation');
 Route::post('/customer/reserving', [CustomerController::class, 'reserving'])->name('cus.reserve');
 // Order menu
 Route::get('customer/table/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
