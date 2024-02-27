@@ -46,8 +46,8 @@ Route::get('/chef/neworder', [HomeController::class, 'chefHome'])->name('chef.ne
 Route::get('/chef/orderdone', [ChefController::class, 'orderdone'])->name('chef.orderdone')->middleware('is_chef');
 
 // Waiter
-Route::get('/waiter/readytoserve', [HomeController::class, 'waiterHome'])->name('waiter.home')->middleware('is_waiter');
-Route::get('/waiter/servedone', [WaiterController::class, 'servedone'])->name('waiter.home')->middleware('is_waiter');
+Route::get('/waiter/readytoserve', [HomeController::class, 'waiterHome'])->name('waiter.readytoserve')->middleware('is_waiter');
+Route::get('/waiter/servedone', [WaiterController::class, 'servedone'])->name('waiter.servedone')->middleware('is_waiter');
 Route::post('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->name('waiter.served')->middleware('is_waiter');
 
 // Cashier

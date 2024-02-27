@@ -64,7 +64,7 @@ class LoginController extends Controller
                 return redirect()->route('cashier.home');
             } 
             else if (auth()->user()->roles == 'waiter') {
-                return redirect()->route('waiter.home');
+                return redirect()->route('waiter.readytoserve');
             }
 
         } else {
