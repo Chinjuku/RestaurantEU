@@ -58,7 +58,7 @@ class LoginController extends Controller
                 return redirect()->route('manager.home');
             } 
             else if (auth()->user()->roles == 'chef') {
-                return redirect()->route('chef.home');
+                return redirect()->route('chef.neworder');
             } 
             else if (auth()->user()->roles == 'cashier') {
                 return redirect()->route('cashier.home');

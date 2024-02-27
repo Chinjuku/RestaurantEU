@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class ManagerController extends Controller
 {
+    function manageemployee() {
+        $employees = DB::table('employee')->get();
+        return view('manager/manageemployee', compact('employees'));
+    }
     function showmenu() {
         return view('manager/managemenu');
     }

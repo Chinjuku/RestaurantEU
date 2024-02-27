@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: Anupan;
+    src: url('../fonts/Anuphan/Anuphan-VariableFont_wght.ttf');
+}
+
+body {
+    font-family: Anupan;
+}
+
+

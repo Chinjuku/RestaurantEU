@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/output.css') }}">
 </head>
 <body>
-    <h1 class="text-3xl">404 nErroreee</h1>
+    <a href="{{route('reservation.home')}}">Back</a>
 </body>
 </html>

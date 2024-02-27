@@ -1,8 +1,7 @@
-<div class="flex flex-col justify-center">
+<div class="flex flex-col justify-center h-full items-center">
     <div wire:loading>
         @include('loading')
     </div>
-    
     <table>
         <tr>
             <th>reserveid</th>
@@ -24,5 +23,4 @@
     <div wire:click>
         {{$reservations->links()}}
     </div>
-    
 </div>

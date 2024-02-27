@@ -8,10 +8,57 @@ use Illuminate\Support\Facades\Route;
 
 class CustomerController extends Controller
 {
-    function reservation() {
-        return view('customer/reservation');
+    function reservationForm() {
+        return view('customer/reservation/form');
     }
-
+    function reservationHome() {
+        return view('customer/reservation/home');
+    }
+    function reservationdone() {
+        return view('customer/reservation/done');
+    }
+    function tablepage() {
+        $id = Route::current()->parameter('id');
+        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        $createOrder = DB::table('order');
+        if (!$gettable) {
+            return '<h1>busy</h1>';
+        }
+        $data = [
+            'table_id' => $id,
+            'isIdle' => 1
+        ];
+        // DB::table('table')->where('table_id', $id)->update($data);
+        return view('customer/home');
+    }
+    function customerCart() {
+        $id = Route::current()->parameter('id');
+        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        $createOrder = DB::table('order');
+        if (!$gettable) {
+            return '<h1>busy</h1>';
+        }
+        $data = [
+            'table_id' => $id,
+            'isIdle' => 1
+        ];
+        // DB::table('table')->where('table_id', $id)->update($data);
+        return view('customer/cart');
+    }
+    function customerOrder() {
+        $id = Route::current()->parameter('id');
+        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        $createOrder = DB::table('order');
+        if (!$gettable) {
+            return '<h1>busy</h1>';
+        }
+        $data = [
+            'table_id' => $id,
+            'isIdle' => 1
+        ];
+        // DB::table('table')->where('table_id', $id)->update($data);
+        return view('customer/orderlist');
+    }
     function reserving(Request $request) {
         $request->validate(
             [
@@ -34,22 +81,9 @@ class CustomerController extends Controller
             'time' => $request->time,
             'end_time' => date('H:i:s', strtotime($request->time) + 15 * 60)
         ]);
-        // return redirect()->route('login'); // รอเชื่อมหน้าหลังจอง
+        return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
-    function tablepage() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
-        }
-        $data = [
-            'table_id' => $id,
-            'isIdle' => 1
-        ];
-        DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/home');
-    }
+    
     // public function storemenu(Request $request)
     // {
     //     $id = Route::current()->parameter('id');

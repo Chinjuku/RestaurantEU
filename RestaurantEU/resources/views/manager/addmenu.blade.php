@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Manager')
-@section('page_name', 'จัดการพนักงาน')
+@section('page_name', 'เพิ่มการเมนู')
 @section('content')
-    <h1>sdadw</h1>
+
 @endsection

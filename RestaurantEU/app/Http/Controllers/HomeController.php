@@ -28,19 +28,19 @@ class HomeController extends Controller
     }
     public function managerHome()
     {
-        $employees = DB::table('employee')->get();
-        return view('manager/dashboard', compact('employees'));
+        return view('manager/dashboard');
     }
 
     public function chefHome()
     {
         $getorder = DB::table('order')->get();
-        return view('chef/home', compact('getorder'));
+        return view('chef/neworder', compact('getorder'));
     }
 
     public function waiterHome()
     {
-        return view('waiter/home');
+        DB::table('orderdetails')->where('order_status', 'serving')->get();
+        return view('waiter/readytoserve');
     }
 
     public function cashierHome()
