@@ -11,7 +11,7 @@ class ReservationList extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'tailwind';
 
     public function placeholder() {
         return view('loading');

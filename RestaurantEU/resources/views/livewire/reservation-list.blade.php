@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center flex-column align-items-center">
+<div class="flex flex-col justify-center">
     <div wire:loading>
         @include('loading')
     </div>

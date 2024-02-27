@@ -2,7 +2,7 @@
 @section('title', 'Chef')
 
 @section('content')
-<div class="container d-flex justify-content-center">
+<div class="flex justify-center h-screen">
     <div class="">
         @livewire('reservation-list' , ['lazy' => true])
     </div>
