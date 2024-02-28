@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/customer/reserving" method="POST">
+    <form action="/customer/reserving" method="POST" class="">
         @csrf
         <input type="text" name="name" placeholder="ชื่อ" value="{{ old('name') }}">
         @error('name')
