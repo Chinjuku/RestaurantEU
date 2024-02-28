@@ -18,8 +18,8 @@ export default {
       'phone' : { max: '575px' }, // Mobile (iPhone 3 - iPhone XS Max).
       'largephone': { min: '576px', max: '767px' }, // Mobile (matches max: iPhone 11 Pro Max landscape @ 896px).
       'tablet': { min: '768px', max: '1199px' }, // Tablet (matches max: iPad Pro @ 1112px).
-      'laptop': { min: '1200px' }, // Desktop wide.
-      'pc': { min: '1359px' } // Desktop widescreen.
+      'laptop': { min: '1200px', max: '1480px' }, // Desktop wide.
+      'pc': { min: '1520px' } // Desktop widescreen.
     },
   },
   plugins: [ require('flowbite/plugin'), 

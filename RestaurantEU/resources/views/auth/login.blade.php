@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('page_name', 'ร้านอาหารสไตล์ยุโรป')
 @section('content')
-    <div class="w-full h-screen bg-darkgreen flex justify-center items-center mt-[-70px]">
-        <div class="h-[681px] w-[734px] bg-lightcream rounded-2xl font-extrabold drop-shadow-md text-darkgreen items-center justify-center flex flex-col">
+    <div class="w-full h-screen bg-darkgreen flex justify-center items-center mt-[-70px] ">
+        <div class="h-[681px] w-[734px] bg-lightcream rounded-2xl font-extrabold laptop:scale-[0.9] tablet:scale-[0.85] drop-shadow-md text-darkgreen items-center justify-center flex flex-col">
             <form method="POST" action="{{ route('login') }}">
                 <h1 class="text-[64px] text-center mb-[30px]">เข้าสู่ระบบ</h1>
                 @csrf
