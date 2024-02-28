@@ -3,7 +3,7 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {},
@@ -22,5 +22,11 @@ export default {
       'pc': { min: '1359px' } // Desktop widescreen.
     },
   },
-  plugins: [ require('flowbite/plugin') ],
+  plugins: [ require('flowbite/plugin'), 
+  // require("daisyui") 
+  ],
+  daisyui: {
+    themes: false,
+    // ['light', 'dark']
+  },
 }

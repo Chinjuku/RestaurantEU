@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChefController extends Controller
 {
@@ -10,7 +11,7 @@ class ChefController extends Controller
         return view('chef/orderdone');
     }
     function updatecooked(Request $request, $tableid, $orderid) {
-        DB::table('orderdetails')->where('order_id', $orderid and 'table_id', $tableid)->update('order_status', 'serving');
-        return view('chef/cook');
+        $changestatus = DB::table('orderdetails')->where('order_id', $orderid and 'table_id', $tableid)->update(['order_status', 'serving']);
+        return view('chef/cook', compact('changestatus'));
     }
 }
