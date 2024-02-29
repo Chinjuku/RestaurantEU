@@ -20,7 +20,7 @@
             <button type="button" wire:click="toggleModal" class="text-white scale-[1.4] bg-darkgreen hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+ เพิ่มพนักงาน</button>
 
             @if($isModalOpen)
-                <div id="createEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75">
+                <div id="createEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-35">
                     <div class="flex items-center justify-center min-h-screen">
                         <div class="relative z-10 w-full max-w-xl p-6 bg-lightcream rounded-lg shadow-xl">
                             {{-- <button wire:click="$set('showModal', false)" class="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700 focus:outline-none">

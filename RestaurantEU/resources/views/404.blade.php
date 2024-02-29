@@ -9,6 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/output.css') }}">
 </head>
 <body>
-    <h1 class="text-3xl">404 nErroreee</h1>
+    ERROR
 </body>
 </html>

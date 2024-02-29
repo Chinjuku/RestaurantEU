@@ -37,7 +37,7 @@ class ManagerController extends Controller
             'detail' => $request->detail,
             'category_id' => $request->category_id
         ]);
-        return redirect()->route('manager.menu')->with('success', 'เพิ่มเมนูใหม่เรียบร้อยจ้า');
+        return redirect()->route('manager.menu')->with('success', 'เพิ่มเมนูใหม่เรียบร้อย');
     }
     function updatemenu(Request $request, $id) {
         DB::table('menu')->where('menu_id', $id)->first();
@@ -52,7 +52,7 @@ class ManagerController extends Controller
     }
     function deletemenu($id) {
         DB::table('menu')->where('id', $id)->delete();
-        return redirect()->route('manager.home')->with('success', 'ลบเมนูเรียบร้อยจ้า');
+        return redirect()->route('manager.home')->with('success', 'ลบเมนูเรียบร้อย');
     }
 
     function addEmployee(Request $request) {
@@ -77,13 +77,13 @@ class ManagerController extends Controller
             'lastname' => $request->lastname,
             'phone' => $request->phone,
             'roles' => $request->roles,
-            'createAt' => time()
+            'createdAt' => date('Y:m:d')
         ]);
-        return redirect()->route('manager.home')->with('success', 'เพิ่มพนักงานใหม่เรียบร้อยจ้า');
+        return redirect()->route('manager.employee')->with('success', 'เพิ่มพนักงานใหม่เรียบร้อย');
     }
     function deleteEmployee($id) {
-        DB::table('employee')->where('id', $id)->delete();
-        return redirect()->route('manager.home')->with('success', 'ลบพนักงานเรียบร้อยจ้า');
+        DB::table('employee')->where('employee_id', $id)->delete();
+        return redirect()->route('manager.employee')->with('success', 'ลบพนักงานเรียบร้อย');
     }
     function updateEmployee(Request $request, $id) {
         // DB::table('employee')->where('employee_id', $id)->first();
@@ -92,8 +92,10 @@ class ManagerController extends Controller
             'lastname' => $request->lastname,
             'phone' => $request->phone,
             'roles' => $request->roles,
-            'createAt' => time()
+            // 'createdAt' => time()
         ];
         DB::table('employee')->where('employee_id', $id)->update($update);
+
+        return redirect()->route('manager.employee')->with('success', "แก้ไขพนักงานเรียบร้อย");
     }
 }
