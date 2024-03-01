@@ -19,9 +19,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
+        // php artisan db:seed ( run this!! )
             // ReserveSeeder::class
             // EmployeeSeeder::class
-            TableSeeder::class
+            // TableSeeder::class
+            MenuSeeder::class
         ]);
     }
 }

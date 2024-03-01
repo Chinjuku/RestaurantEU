@@ -31,28 +31,31 @@ class ManagerController extends Controller
                 'category_id' => 'กรุณาเลือกหมวดหมู่อาหาร'
             ]);
         DB::table('menu')->insert([
-            'menu_name' => $request->name,
+            'menu_name' => $request->menu_name,
             'price' => $request->price,
             'menu_img' => $request->menu_img,
             'detail' => $request->detail,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'types' => $request->types
         ]);
         return redirect()->route('manager.menu')->with('success', 'เพิ่มเมนูใหม่เรียบร้อย');
     }
     function updatemenu(Request $request, $id) {
         DB::table('menu')->where('menu_id', $id)->first();
         $update = [
-            'menu_name' => $request->name,
+            'menu_name' => $request->menu_name,
             'price' => $request->price,
             'menu_img' => $request->menu_img,
             'detail' => $request->detail,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'types' => $request->types
         ];
-        DB::table('menu')->where('id', $id)->update($update);
+        DB::table('menu')->where('menu_id', $id)->update($update);
+        return redirect()->route('manager.menu')->with('success', 'แก้ไขเมนูเรียบร้อย');
     }
     function deletemenu($id) {
-        DB::table('menu')->where('id', $id)->delete();
-        return redirect()->route('manager.home')->with('success', 'ลบเมนูเรียบร้อย');
+        DB::table('menu')->where('menu_id', $id)->delete();
+        return redirect()->route('manager.menu')->with('success', 'ลบเมนูเรียบร้อย');
     }
 
     function addEmployee(Request $request) {

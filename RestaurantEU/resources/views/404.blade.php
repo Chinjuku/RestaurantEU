@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/output.css') }}">
 </head>
-<body>
-    ERROR
+<body class="overflow-y-hidden h-screen bg-darkgreen text-[74px] font-bold text-lightcream w-full flex justify-center items-center">
+    <h1>ไม่พบหน้าที่ค้นหา</h1>
 </body>
 </html>
