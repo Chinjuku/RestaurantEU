@@ -15,9 +15,10 @@ class OrderMenu extends Component
         sleep(0.5);
         $menus = DB::table('menu')
             ->join('category', 'menu.category_id', '=', 'category.category_id')
-            ->where('menu_name', 'like', '%' . $this->search . '%')
-            ->where('category_name', 'like', '%' . $this->setCategory . '%')
-            ->paginate(10);
-        return view('livewire.customer.order-menu');
+            ->get();
+            // ->where('menu_name', 'like', '%' . $this->search . '%')
+            // ->where('category_name', 'like', '%' . $this->setCategory . '%')
+            // ->paginate(10);
+        return view('livewire.customer.order-menu', compact('menus'));
     }
 }
