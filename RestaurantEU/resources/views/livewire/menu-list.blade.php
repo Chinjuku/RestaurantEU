@@ -22,7 +22,6 @@
             </div>
         </div>
 
-        {{-- <livewire:add-employee /> --}}
         <div>
             <button type="button" wire:click="toggleModal" class="text-white scale-[1.4] bg-darkgreen hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+ เพิ่มเมนู</button>
 
@@ -184,14 +183,14 @@
                                             
                                             <div class="relative z-0 w-full mb-5 group">
                                                 <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">หมวดหมู่</label>
-                                                <select name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <select wire:model.live="setTypes2" name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option value="{{ $category_id_id }}" selected>{{ $category_id }}</option>
                                                     <option value="1">อาหารทานเล่น</option>   
                                                     <option value="2">อาหารจานหลัก</option>
-                                                    <option value="3">เครื่องดื่ม</option>
+                                                    <option value="3">เครื่องดื่ม/ของหวาน</option>
                                                 </select>
                                             </div>
-                                            @if( $category_id == 'อาหารจานหลัก' )
+                                            @if( $category_id_id == 2 || $setTypes2 == 2)
                                             <div class="relative z-0 w-full mb-5 group">
                                                 <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">ประเภท</label>
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -201,7 +200,7 @@
                                                     <option value="สเต๊ก">สเต๊ก</option>
                                                 </select>
                                             </div>
-                                            @elseif ( $category_id == 'เครื่องดื่ม' )
+                                            @elseif ( $category_id_id == 3 || $setTypes2 == 3)
                                             <div class="relative z-0 w-full mb-5 group">
                                                 <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">ประเภท</label>
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
