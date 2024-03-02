@@ -44,7 +44,7 @@
 
                 {{-- food1 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -77,7 +77,7 @@
 
                 {{-- food2 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -110,7 +110,7 @@
 
                 {{-- food3 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -143,7 +143,7 @@
 
                 {{-- food4 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -175,7 +175,7 @@
                 </div>
 
                 {{-- food5 --}}<div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -208,7 +208,7 @@
 
                 {{-- food6 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -241,7 +241,7 @@
 
                 {{-- food7 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -274,7 +274,7 @@
 
                 {{-- food8 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -307,7 +307,7 @@
 
                 {{-- food9 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
@@ -340,7 +340,7 @@
 
                 {{-- food10 --}}
                 <div class="flex justify-between px-[10%] mt-[1%] mb-[4%]">
-                    <div><p class="text-[32px] font-bold">1. ข้าวผัด</p></div>
+                    <div><p class="text-[32px]">1. ข้าวผัด</p></div>
                     <div class="flex justify-between space-x-[140px]">
                         <div><button><svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_144_704)">
