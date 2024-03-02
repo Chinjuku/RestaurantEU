@@ -12,7 +12,7 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
 <body class="overflow-y-hidden">
-    <nav class="bg-darkgreen fixed w-full text-lightcream p-4 h-[70px] flex items-center">
+    <nav class="bg-darkgreen fixed w-full text-lightcream p-4 h-[70px] flex items-center z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div>
                 <a class="font-bold text-3xl" href="{{ url('/') }}">
