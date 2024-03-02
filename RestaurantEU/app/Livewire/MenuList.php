@@ -11,7 +11,7 @@ class MenuList extends Component
 
     public $menu_id, $menu_name, $types, $price, $menu_img, $detail, $category_id, $category_id_id;
     public $isModalOpen = false, $isModalOpen2 = false;
-    public $setTypes = 0;
+    public $setTypes = 0, $setTypes2 = 0;
     public $search = "";
     public $setPic = "";
     public $setCategory = "";
