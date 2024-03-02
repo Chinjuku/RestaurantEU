@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 
 class CustomerController extends Controller
 {
@@ -83,7 +84,19 @@ class CustomerController extends Controller
         ]);
         return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
-    
+    public function chooseMenu(Request $request, $id) {
+        $minutes = 1;
+        $values = [
+            'menu_ID' => $request->menu_id,
+            'menu_Name' => $request->menu_name,
+            'prices' => $request->price,
+            'count' => $request->count, 
+        ];
+        $cookie = Cookie::make('menu_cookie', json_encode($values), $minutes);
+        $tableid = $id;
+        // dd($tableid);
+        return redirect()->route('customer.table', ['id' => $tableid])->withCookie($cookie)->with('success', 'เลือกอาหารละจ้า');
+    }
     // public function storemenu(Request $request)
     // {
     //     $id = Route::current()->parameter('id');

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth scroll-pt-[-200px]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/output.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -13,9 +14,8 @@
         <h1 class="text-[28px] font-bold text-lightcream">@yield('name_nav')</h1>
         <div class="absolute right-10">@yield('cart')</div>
     </nav>
-    <div class="pt-[80px] bg-lgreen ">
+    <div class="pt-[80px]">
         @yield('content')
     </div>
-    
 </body>
 </html>
