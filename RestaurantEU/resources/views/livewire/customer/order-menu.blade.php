@@ -7,7 +7,6 @@
             <div id="marker" class="z-9 phone:py-[15px] rounded-3xl phone:px-[5px] border-b top-[15px] left-[35px] absolute bg-darkgreen w-[27%] duration-300 transition-all"></div>
         </div>
     </nav>
-    {{-- @if ()  --}}
     <div id="playeat" class="mb-4 mt-[60px] scroll-mt-[200px]">
         <div
             class="w-[130px] h-[38px] phone:mb-4 phone:mx-[40px] text-[18px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
@@ -30,8 +29,6 @@
             @endforeach
         </div>
     </div>
-    {{-- @endif --}}
-    {{-- @if () --}}
     <div id="main" class="mb-4 scroll-mt-[200px]" >   
         <div
             class="w-[130px] h-[38px] phone:mb-4 phone:mx-[40px] text-[18px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
@@ -98,8 +95,6 @@
             @endforeach
         </div>
     </div>
-    {{-- @endif --}}
-    {{-- @if () --}}
     <div id="drink" class="mb-4 scroll-mt-[200px]" >
         <div
             class="w-[130px] h-[38px] phone:mb-4 phone:mx-[40px] text-[18px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
@@ -166,7 +161,7 @@
             @endforeach
         </div>
     </div>
-    <div class="mb-4">
+    <div class="">
         <div
             class="w-[130px] h-[38px] phone:mb-4 phone:mx-[40px] text-[18px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">อื่นๆ</p>
@@ -188,7 +183,6 @@
             @endforeach
         </div>
     </div>
-    {{-- @endif --}}
     @if($isModalOpen2)
         <div id="updateEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-[100] overflow-y-auto bg-gray-500 bg-opacity-75">
             <div class="flex items-center justify-center min-h-screen">
@@ -201,11 +195,9 @@
                         <input name="price" wire:model="price" type="text" value="{{ $price }}" readonly>
                         <input type="text" value="{{ $types }}" readonly>
                         <input type="text" value="{{ $detail }}" readonly>
-                        <img src="{{ $menu_img }}">
+                        <img src="{{ $menu_img }}" class="w-[200px] h-[150px] bg-cover">
                         <div class="flex">
-                            <button>-</button>
-                                <input name="count" wire:model="count" value="count">
-                            <button>+</button>
+                            @livewire('customer.counter-menu')
                         </div>
                         <button type="submit">สั่ง{{ $menu_name }}</button>
                     </form>

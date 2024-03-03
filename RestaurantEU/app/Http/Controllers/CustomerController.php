@@ -19,18 +19,17 @@ class CustomerController extends Controller
         return view('customer/reservation/done');
     }
     function tablepage() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        $tableid = Route::current()->parameter('id');
+        $gettable = DB::table('table')->where('table_id', $tableid)->where('isIdle', 0)->first();
         $createOrder = DB::table('order');
         if (!$gettable) {
             return '<h1>busy</h1>';
         }
         $data = [
-            'table_id' => $id,
+            'table_id' => $tableid,
             'isIdle' => 1
         ];
-        // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/home');
+        return view('customer/home', compact('tableid'));
     }
     function customerCart() {
         $id = Route::current()->parameter('id');
@@ -85,17 +84,28 @@ class CustomerController extends Controller
         return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
     public function chooseMenu(Request $request, $id) {
-        $minutes = 1;
+        $minutes = 10;
         $values = [
             'menu_ID' => $request->menu_id,
             'menu_Name' => $request->menu_name,
             'prices' => $request->price,
             'count' => $request->count, 
         ];
-        $cookie = Cookie::make('menu_cookie', json_encode($values), $minutes);
+        $existingCookie = request()->cookie('menu_cookie');
+        $existingOrders = json_decode($existingCookie, true);
+        $existingOrders[] = $values;
+        $cookieValue = json_encode($existingOrders);
+        $cookie = Cookie::make('menu_cookie', $cookieValue, $minutes);
         $tableid = $id;
         // dd($tableid);
         return redirect()->route('customer.table', ['id' => $tableid])->withCookie($cookie)->with('success', 'เลือกอาหารละจ้า');
+    }
+    public function showCart(Request $request) {
+        $tableid = Route::current()->parameter('id'); // $tableid = $id;
+        $orders = json_decode(request()->cookie('menu_cookie'), true);
+        // dd($orders, $tableid);
+        return view('customer/cart', compact('orders', 'tableid'));
+        // return redirect()->route('customer.table.cart', ['id' => $tableid])->withCookie($cookie);
     }
     // public function storemenu(Request $request)
     // {

@@ -15,7 +15,7 @@ class OrderMenu extends Component
     public $isModalOpen2 = false;
     //show at popup menu
     public $menu_id, $menu_name, $types, $price, $menu_img, $detail, $category_id, $category_id_id;
-    //To set cookie
+    //Count Order
     public $count = 1;
 
     public $tableid;
@@ -57,7 +57,7 @@ class OrderMenu extends Component
     // }
     public function render()
     {
-        sleep(0.5);
+        // sleep(0.5);
         $menus = DB::table('menu')
             ->join('category', 'menu.category_id', '=', 'category.category_id')
             ->get();
