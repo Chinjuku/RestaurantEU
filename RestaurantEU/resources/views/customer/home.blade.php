@@ -11,7 +11,7 @@
 @section('content')
     <div class="h-full bg-lgreen">
         @if (session('success'))
-            <div id="successMessage" class="p-5 mb-4 text-xl my-[-70px] text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 mx-[120px] dark:text-green-400" role="alert">
+            <div id="successMessage" class="p-5 mb-4 text-xl tablet:text-2xl my-[-70px] text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 mx-[120px] dark:text-green-400" role="alert">
                 <span class="font-medium">{{ session('success') }}</span>
             </div>
         @endif

@@ -33,6 +33,7 @@ class CustomerController extends Controller
     }
     function customerCart() {
         $id = Route::current()->parameter('id');
+        // dd($id);
         $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
         $createOrder = DB::table('order');
         if (!$gettable) {
@@ -43,22 +44,22 @@ class CustomerController extends Controller
             'isIdle' => 1
         ];
         // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/cart');
+        return view('customer/cart', compact('id'));
     }
-    function customerOrder() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
-        }
-        $data = [
-            'table_id' => $id,
-            'isIdle' => 1
-        ];
-        // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/orderlist');
-    }
+    // function customerOrder() {
+    //     $id = Route::current()->parameter('id');
+    //     $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+    //     $createOrder = DB::table('order');
+    //     if (!$gettable) {
+    //         return '<h1>busy</h1>';
+    //     }
+    //     $data = [
+    //         'table_id' => $id,
+    //         'isIdle' => 1
+    //     ];
+    //     // DB::table('table')->where('table_id', $id)->update($data);
+    //     return view('customer/orderlist');
+    // }
     function reserving(Request $request) {
         $request->validate(
             [
@@ -103,9 +104,25 @@ class CustomerController extends Controller
     public function showCart(Request $request) {
         $tableid = Route::current()->parameter('id'); // $tableid = $id;
         $orders = json_decode(request()->cookie('menu_cookie'), true);
-        // dd($orders, $tableid);
+        // dd($orders);
         return view('customer/cart', compact('orders', 'tableid'));
-        // return redirect()->route('customer.table.cart', ['id' => $tableid])->withCookie($cookie);
+    }
+    public function clearCookie(Request $request, $tableid, $key) {
+    {
+            $cookieValue = request()->cookie('menu_cookie');
+            $values = json_decode($cookieValue, true);
+            foreach ($values as $keys => $value) {
+                if ($keys == $key) {
+                    unset($values[$keys]);
+                }
+            }
+            // dd($values);
+            $updatedCookieValue = json_encode($values);
+            // Set the updated cookie value
+            $cookie = cookie('menu_cookie', $updatedCookieValue, 10);
+            // Redirect to the cart page with the updated cookie
+            return redirect(route('customer.table.cart', ['id' => $tableid]))->withCookie($cookie);
+        }
     }
     // public function storemenu(Request $request)
     // {
