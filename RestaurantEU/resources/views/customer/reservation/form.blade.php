@@ -28,7 +28,7 @@
     </div>
     <div class="mt-5 bg-darkgreen rounded-3xl px-30 py-32">
         <div>
-            <h2 class="text-[32px] text-lightcream font-bold text-center">จองโต๊ะอาหาร</h2>
+            <h2 class="text-[48px] text-lightcream font-bold text-center">จองโต๊ะอาหาร</h2>
         </div>
         <div class="">
             <form action="/customer/reserving" method="POST">
@@ -70,7 +70,7 @@
                     @enderror
                 </div>
             
-                <button type="submit" class="mx-auto mt-3 flex items-center justify-end px-5 py-3 text-[24px] bg-lightcream" >ยืนยันการจอง</button>
+                <button type="submit" class="mx-auto mt-3 flex items-center justify-end px-5 py-3 text-[24px] bg-lightcream hover:bg-darkgreen hover:text-lightcream hover:transition duration-400 ease-out" >ยืนยันการจอง</button>
             </form>
         </div>
     </div>
