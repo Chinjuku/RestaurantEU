@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,13 @@ class HomeController extends Controller
 
     public function chefHome()
     {
-        $getorder = DB::table('order')->get();
+        $getorder = DB::table('order')
+            // ->where(status = 'pending' or status = 'cooking')
+            ->get()
+            ->map(function ($order) {
+                $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i:s');
+                return $order;
+        });
         return view('chef/neworder', compact('getorder'));
     }
 
@@ -46,5 +53,9 @@ class HomeController extends Controller
     public function cashierHome()
     {
         return view('cashier/home');
+    }
+    public function showReserve() 
+    {
+        return view('show-reserve');
     }
 }

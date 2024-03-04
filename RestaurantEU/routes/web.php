@@ -43,7 +43,9 @@ Route::get('/manager/deletemenu/{id}', [ManagerController::class, 'deletemenu'])
 
 // Chef
 Route::get('/chef/neworder', [HomeController::class, 'chefHome'])->name('chef.neworder')->middleware('is_chef');
+Route::get('/chef/ordershow/{id}', [ChefController::class, 'orderShow'])->name('chef.neworder.show')->middleware('is_chef');
 Route::get('/chef/orderdone', [ChefController::class, 'orderdone'])->name('chef.orderdone')->middleware('is_chef');
+
 
 // Waiter
 Route::get('/waiter/readytoserve', [HomeController::class, 'waiterHome'])->name('waiter.readytoserve')->middleware('is_waiter');
@@ -62,6 +64,10 @@ Route::post('/customer/reserving', [CustomerController::class, 'reserving'])->na
 
 // Order menu
 Route::get('customer/table/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
+Route::post('customer/table/{id}/choose', [CustomerController::class, 'chooseMenu'])->name('customer.table.choose');
 Route::get('customer/table/{id}/order', [CustomerController::class, 'customerOrder'])->name('customer.table.order');
-Route::get('customer/table/{id}/cart', [CustomerController::class, 'customerCart'])->name('customer.table.cart');
+Route::get('customer/table/{id}/clearcart/{key}', [CustomerController::class, 'clearCookie'])->name('customer.table.clearcart');
+Route::get('customer/table/{id}/cart', [CustomerController::class, 'showCart'])->name('customer.table.cart');
 Route::fallback( function() { return view('404'); });
+
+Route::get('showreserve', [HomeController::class, 'showReserve'])->name('showreserve');

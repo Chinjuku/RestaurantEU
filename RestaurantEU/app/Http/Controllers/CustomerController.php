@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Carbon;
 
 class CustomerController extends Controller
 {
@@ -18,46 +20,80 @@ class CustomerController extends Controller
         return view('customer/reservation/done');
     }
     function tablepage() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        $tableid = Route::current()->parameter('id');
+        $gettable = DB::table('table')->where('table_id', $tableid)->where('isIdle', 0)->first();
         $createOrder = DB::table('order');
         if (!$gettable) {
             return '<h1>busy</h1>';
         }
         $data = [
-            'table_id' => $id,
+            'table_id' => $tableid,
             'isIdle' => 1
         ];
-        // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/home');
+        return view('customer/home', compact('tableid'));
     }
-    function customerCart() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
+    // function customerCart() {
+    //     $id = Route::current()->parameter('id');
+    //     // dd($id);
+    //     $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+    //     $createOrder = DB::table('order');
+    //     if (!$gettable) {
+    //         return '<h1>busy</h1>';
+    //     }
+    //     $data = [
+    //         'table_id' => $id,
+    //         'isIdle' => 1
+    //     ];
+    //     // DB::table('table')->where('table_id', $id)->update($data);
+    //     return view('customer/cart', compact('id'));
+    // }
+    function customerOrder(Request $request, $tableid) {
+        // $id = Route::current()->parameter('id');
+        $cookieData = json_decode(request()->cookie('menu_cookie'), true);
+        $getOrderID = DB::table('order')->insertGetId([
+            'table_id' => $tableid,
+            'order_time' => now(),
+            'status' => 'pending'
+        ]);
+        // dd($cookieData, $getOrderID);
+        foreach ($cookieData as $order) {
+            DB::table('orderdetails')->insert([
+                'order_id' => $getOrderID,
+                // 'table_id' => $tableid,
+                'menu_id' => $order['menu_ID'],
+                // 'menu_name' => $order['menu_Name'],
+                // 'price' => $order['prices'],
+                'quantity' => $order['count'],
+                'order_status' => 'in-queue'	
+            ]);
         }
-        $data = [
-            'table_id' => $id,
-            'isIdle' => 1
-        ];
+
+        $totalAmount = DB::table('orderdetails')
+            ->join('menu', 'orderdetails.menu_id', '=', 'menu.menu_id')
+            ->where('order_id', $getOrderID)
+            ->sum(DB::raw('quantity * price'));
+        DB::table('bill')->insert([
+            'table_id' => $tableid,
+            'order_id' => $getOrderID,
+            'totalprice' => $totalAmount,
+            'isPaid' => false,
+        ]);
+        $notification = array(
+            'message' => 'สั่งเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        
+        // $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        // $createOrder = DB::table('order');
+        // if (!$gettable) {
+        //     return '<h1>busy</h1>';
+        // }
+        // $data = [
+        //     'table_id' => $id,
+        //     'isIdle' => 1
+        // ];
         // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/cart');
-    }
-    function customerOrder() {
-        $id = Route::current()->parameter('id');
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
-        }
-        $data = [
-            'table_id' => $id,
-            'isIdle' => 1
-        ];
-        // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/orderlist');
+        return view('customer/orderlist')->with($notification);
     }
     function reserving(Request $request) {
         $request->validate(
@@ -83,7 +119,59 @@ class CustomerController extends Controller
         ]);
         return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
-    
+    public function chooseMenu(Request $request, $id) {
+        $minutes = 20;
+        $values = [
+            'menu_ID' => $request->menu_id,
+            'menu_Name' => $request->menu_name,
+            'prices' => $request->price,
+            'count' => $request->count, 
+        ];
+        $existingCookie = request()->cookie('menu_cookie');
+        $existingOrders = json_decode($existingCookie, true);
+        $existingOrders[] = $values;
+        $cookieValue = json_encode($existingOrders);
+        $cookie = Cookie::make('menu_cookie', $cookieValue, $minutes);
+        $tableid = $id;
+        // dd($tableid);
+        $notification = array(
+            'message' => 'เลือกเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('customer.table', ['id' => $tableid])
+                ->withCookie($cookie)
+                ->with($notification);
+                // ->with('success', 'เลือกอาหารละจ้า');
+    }
+    public function showCart(Request $request) {
+        $tableid = Route::current()->parameter('id'); // $tableid = $id;
+        $orders = json_decode(request()->cookie('menu_cookie'), true);
+        // dd($orders);
+        return view('customer/cart', compact('orders', 'tableid'));
+    }
+    public function clearCookie(Request $request, $tableid, $key) {
+    {
+            $cookieValue = request()->cookie('menu_cookie');
+            $values = json_decode($cookieValue, true);
+            foreach ($values as $keys => $value) {
+                if ($keys == $key) {
+                    unset($values[$keys]);
+                }
+            }
+            // dd($values);
+            $updatedCookieValue = json_encode($values);
+            // Set the updated cookie value
+            $cookie = cookie('menu_cookie', $updatedCookieValue, 20);
+            $notification = array(
+                'message' => 'ยกเลิกรายการเรียบร้อย!',
+                'alert-type' => 'success'
+            );
+            // Redirect to the cart page with the updated cookie
+            return redirect(route('customer.table.cart', ['id' => $tableid]))
+                    ->withCookie($cookie)
+                    ->with($notification);
+        }
+    }
     // public function storemenu(Request $request)
     // {
     //     $id = Route::current()->parameter('id');
