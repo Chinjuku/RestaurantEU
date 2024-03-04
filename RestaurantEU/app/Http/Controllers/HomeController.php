@@ -34,14 +34,7 @@ class HomeController extends Controller
 
     public function chefHome()
     {
-        $getorder = DB::table('order')
-            // ->where(status = 'pending' or status = 'cooking')
-            ->get()
-            ->map(function ($order) {
-                $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i:s');
-                return $order;
-        });
-        return view('chef/neworder', compact('getorder'));
+        return view('chef/neworder');
     }
 
     public function waiterHome()
