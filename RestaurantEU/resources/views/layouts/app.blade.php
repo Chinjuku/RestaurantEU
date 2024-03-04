@@ -56,6 +56,17 @@
                                     <a href="{{ route('manager.menu') }}" class="block px-4 py-2 hover:bg-gray-100 border-b border-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">จัดการเมนู</a>
                                   </li>
                                 @endif
+                                @if ( Auth::user()->name == 'Cashier')
+                                  <li>
+                                    <a href="{{ route('manager.home') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ใบเสร็จ</a>
+                                  </li>
+                                  <li>
+                                    <a href="{{ route('manager.employee') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">จองคิว</a>
+                                  </li>
+                                  <li>
+                                    <a href="{{ route('manager.menu') }}" class="block px-4 py-2 hover:bg-gray-100 border-b border-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">จัดการเมนู</a>
+                                  </li>
+                                @endif
                                   <li>
                                     <div>
                                         <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="{{ route('logout') }}"
