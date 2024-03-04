@@ -56,7 +56,7 @@
                 </div>
             @endforeach
             <div class="w-full flex justify-center mt-4">
-                <button class="px-5 py-3 bg-darkgreen text-lightcream rounded-xl">สั่งออเดอร์</button>
+                <a href="{{ route('customer.table.order', $tableid) }}" class="px-5 py-3 bg-darkgreen text-lightcream rounded-xl">สั่งออเดอร์</a>
             </div>
         @else
             <div class="flex justify-center pt-8 text-[20px] font-medium tablet:text-[24px] text-darkgreen">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Carbon;
 
 class CustomerController extends Controller
 {
@@ -48,16 +49,39 @@ class CustomerController extends Controller
     // }
     function customerOrder(Request $request, $tableid) {
         // $id = Route::current()->parameter('id');
-        $getCookie = request()->cookie('menu_cookie');
-        DB::table('order')->insert([
+        $cookieData = json_decode(request()->cookie('menu_cookie'), true);
+        $getOrderID = DB::table('order')->insertGetId([
             'table_id' => $tableid,
-            'order_time' => time()
+            'order_time' => now(),
+            'status' => 'pending'
         ]);
-        $getorders = DB::table('order')->where('tableid', $tableid)->first();
-        $orderdetails = DB::table('orderdetails')->where('tableid', $tableid)->insert([
-            'order_id' => $getorders->order_id,
-            // 'menu_id' => $menu_id,
+        // dd($cookieData, $getOrderID);
+        foreach ($cookieData as $order) {
+            DB::table('orderdetails')->insert([
+                'order_id' => $getOrderID,
+                // 'table_id' => $tableid,
+                'menu_id' => $order['menu_ID'],
+                // 'menu_name' => $order['menu_Name'],
+                // 'price' => $order['prices'],
+                'quantity' => $order['count'],
+                'order_status' => 'in-queue'	
+            ]);
+        }
+
+        $totalAmount = DB::table('orderdetails')
+            ->join('menu', 'orderdetails.menu_id', '=', 'menu.menu_id')
+            ->where('order_id', $getOrderID)
+            ->sum(DB::raw('quantity * price'));
+        DB::table('bill')->insert([
+            'table_id' => $tableid,
+            'order_id' => $getOrderID,
+            'totalprice' => $totalAmount,
+            'isPaid' => false,
         ]);
+        $notification = array(
+            'message' => 'สั่งเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
         
         // $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
         // $createOrder = DB::table('order');
@@ -69,7 +93,7 @@ class CustomerController extends Controller
         //     'isIdle' => 1
         // ];
         // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/orderlist');
+        return view('customer/orderlist')->with($notification);
     }
     function reserving(Request $request) {
         $request->validate(
@@ -96,7 +120,7 @@ class CustomerController extends Controller
         return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
     public function chooseMenu(Request $request, $id) {
-        $minutes = 10;
+        $minutes = 20;
         $values = [
             'menu_ID' => $request->menu_id,
             'menu_Name' => $request->menu_name,
@@ -137,7 +161,7 @@ class CustomerController extends Controller
             // dd($values);
             $updatedCookieValue = json_encode($values);
             // Set the updated cookie value
-            $cookie = cookie('menu_cookie', $updatedCookieValue, 10);
+            $cookie = cookie('menu_cookie', $updatedCookieValue, 20);
             $notification = array(
                 'message' => 'ยกเลิกรายการเรียบร้อย!',
                 'alert-type' => 'success'

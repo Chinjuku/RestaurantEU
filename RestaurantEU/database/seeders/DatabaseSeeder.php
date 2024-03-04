@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // php artisan db:seed ( run this!! )
             // ReserveSeeder::class
             // EmployeeSeeder::class
-            // TableSeeder::class
-            MenuSeeder::class
+            TableSeeder::class
+            // MenuSeeder::class
         ]);
     }
 }
