@@ -1083,10 +1083,6 @@ input:checked + .toggle-bg {
   bottom: 0px;
 }
 
-.bottom-6 {
-  bottom: 1.5rem;
-}
-
 .bottom-\[60px\] {
   bottom: 60px;
 }
@@ -1136,14 +1132,9 @@ input:checked + .toggle-bg {
   margin-right: 6rem;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .mx-auto {
@@ -1154,16 +1145,6 @@ input:checked + .toggle-bg {
 .my-24 {
   margin-top: 6rem;
   margin-bottom: 6rem;
-}
-
-.mx-6 {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
 }
 
 .mb-0 {
@@ -1224,26 +1205,6 @@ input:checked + .toggle-bg {
 
 .mt-\[10px\] {
   margin-top: 10px;
-}
-
-.mt-40 {
-  margin-top: 10rem;
-}
-
-.mt-80 {
-  margin-top: 20rem;
-}
-
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
-.mt-\[90\%\] {
-  margin-top: 90%;
 }
 
 .mt-\[95\%\] {
@@ -1446,6 +1407,10 @@ input:checked + .toggle-bg {
   resize: both;
 }
 
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1456,6 +1421,10 @@ input:checked + .toggle-bg {
 
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1514,8 +1483,8 @@ input:checked + .toggle-bg {
   gap: 40px;
 }
 
-.gap-y-4 {
-  row-gap: 1rem;
+.gap-4 {
+  gap: 1rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1841,26 +1810,6 @@ input:checked + .toggle-bg {
   padding-bottom: 5px;
 }
 
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.px-36 {
-  padding-left: 9rem;
-  padding-right: 9rem;
-}
-
-.px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
-}
-
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -2076,12 +2025,12 @@ input:checked + .toggle-bg {
   transition-duration: 200ms;
 }
 
-.duration-700 {
-  transition-duration: 700ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
 }
 
 .ease-in-out {
@@ -2340,12 +2289,163 @@ body {
 }
 
 @media (max-width: 575px) {
+  .phone\:m-2 {
+    margin: 0.5rem;
+  }
+
+  .phone\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .phone\:mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
+  .phone\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
+  .phone\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .phone\:inline-block {
+    display: inline-block;
+  }
+
+  .phone\:flex {
+    display: flex;
+  }
+
+  .phone\:grid {
+    display: grid;
+  }
+
+  .phone\:w-full {
+    width: 100%;
+  }
+
+  .phone\:w-\[100\%\] {
+    width: 100%;
+  }
+
+  .phone\:grid-flow-col {
+    grid-auto-flow: column;
+  }
+
+  .phone\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .phone\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .phone\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 575px) {
+    .phone\:phone\:grid-rows-2 {
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .phone\:grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .phone\:grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .phone\:flex-row {
+    flex-direction: row;
+  }
+
+  .phone\:items-center {
+    align-items: center;
+  }
+
+  .phone\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .phone\:justify-center {
+    justify-content: center;
+  }
+
+  .phone\:justify-between {
+    justify-content: space-between;
+  }
+
+  .phone\:gap-1 {
+    gap: 0.25rem;
+  }
+
   .phone\:gap-4 {
     gap: 1rem;
   }
 
+  .phone\:gap-3 {
+    gap: 0.75rem;
+  }
+
+  .phone\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .phone\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .phone\:text-\[12px\] {
+    font-size: 12px;
+  }
+
+  .phone\:text-\[18px\] {
+    font-size: 18px;
+  }
+
+  .phone\:text-\[24px\] {
+    font-size: 24px;
+  }
+
   .phone\:text-\[32px\] {
     font-size: 32px;
+  }
+
+  .phone\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .phone\:text-\[16px\] {
+    font-size: 16px;
+  }
+
+  .phone\:text-\[26px\] {
+    font-size: 26px;
+  }
+
+  .phone\:text-\[20px\] {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tablet\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .tablet\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
