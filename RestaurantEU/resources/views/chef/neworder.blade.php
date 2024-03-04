@@ -17,19 +17,23 @@
 
         {{-- กรอบซ้าย --}}
         <div class="w-[48%] h-[1000px] bg-cream rounded-[32px] flex flex-col items-center gap-[20px] py-[2%]">
-            <button class="text-4xl w-[90%] border border-black flex justify-between p-6">
-                <p>โต๊ะที่ 1</p>
-                <p>เวลา</p>
-            </button>
-            <button class="text-4xl w-[90%] border border-black flex justify-between p-6">
-                <p>โต๊ะที่ 1</p>
-                <p>เวลา</p>
-            </button>
+            @foreach ($getorder as $item)
+                @if($item->status === 'cooking')
+                    <a href="{{ route('chef.neworder.show', ['id' => $item->order_id ] ) }}" class="text-4xl bg-lgreen w-[90%] border border-black flex justify-between p-6">
+                        <p>โต๊ะที่ {{ $item->table_id }}</p>
+                        <p>เวลา {{ $item->formattedOrderTime }}</p>
+                        <p>111111</p>
+                    </a>
+                @endif
+                <a href="{{ route('chef.neworder.show', ['id' => $item->order_id ] ) }}" class="text-4xl w-[90%] border border-black flex justify-between p-6">
+                    <p>โต๊ะที่ {{ $item->table_id }}</p>
+                    <p>เวลา {{ $item->formattedOrderTime }}</p>
+                </a>
+            @endforeach
         </div>
 
         {{-- กรอบขขวา --}}
         <div class="w-[48%] h-[1000px] bg-cream rounded-[32px]">
-
             {{-- หัวโต๊ะส่วนที่ 1 --}}
             <div class="text-4xl pt-[50px] px-[10%]">
                 <div class="flex justify-between">
