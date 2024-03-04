@@ -10,11 +10,49 @@
 @endsection
 @section('content')
     <div class="h-full bg-lgreen">
-        @if (session('success'))
+        {{-- @if (session('success'))
             <div id="successMessage" class="p-5 mb-4 text-xl tablet:text-2xl my-[-70px] text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 mx-[120px] dark:text-green-400" role="alert">
                 <span class="font-medium">{{ session('success') }}</span>
             </div>
-        @endif
+        @endif --}}
         @livewire('customer.ordermenu', ['lazy' => true])
     </div>
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+
+                    toastr.options.timeOut = 10000;
+                    toastr.info("{{ Session::get('message') }}");
+                    var audio = new Audio('audio.mp3');
+                    audio.play();
+                    break;
+                case 'success':
+
+                    toastr.options.timeOut = 10000;
+                    toastr.success("{{ Session::get('message') }}");
+                    var audio = new Audio('audio.mp3');
+                    audio.play();
+
+                    break;
+                case 'warning':
+
+                    toastr.options.timeOut = 10000;
+                    toastr.warning("{{ Session::get('message') }}");
+                    var audio = new Audio('audio.mp3');
+                    audio.play();
+
+                    break;
+                case 'error':
+
+                    toastr.options.timeOut = 10000;
+                    toastr.error("{{ Session::get('message') }}");
+                    var audio = new Audio('audio.mp3');
+                    audio.play();
+
+                    break;
+            }
+        @endif
+    </script>
 @endsection

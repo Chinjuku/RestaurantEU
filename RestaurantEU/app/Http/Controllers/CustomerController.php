@@ -31,23 +31,9 @@ class CustomerController extends Controller
         ];
         return view('customer/home', compact('tableid'));
     }
-    function customerCart() {
-        $id = Route::current()->parameter('id');
-        // dd($id);
-        $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
-        }
-        $data = [
-            'table_id' => $id,
-            'isIdle' => 1
-        ];
-        // DB::table('table')->where('table_id', $id)->update($data);
-        return view('customer/cart', compact('id'));
-    }
-    // function customerOrder() {
+    // function customerCart() {
     //     $id = Route::current()->parameter('id');
+    //     // dd($id);
     //     $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
     //     $createOrder = DB::table('order');
     //     if (!$gettable) {
@@ -58,8 +44,33 @@ class CustomerController extends Controller
     //         'isIdle' => 1
     //     ];
     //     // DB::table('table')->where('table_id', $id)->update($data);
-    //     return view('customer/orderlist');
+    //     return view('customer/cart', compact('id'));
     // }
+    function customerOrder(Request $request, $tableid) {
+        // $id = Route::current()->parameter('id');
+        $getCookie = request()->cookie('menu_cookie');
+        DB::table('order')->insert([
+            'table_id' => $tableid,
+            'order_time' => time()
+        ]);
+        $getorders = DB::table('order')->where('tableid', $tableid)->first();
+        $orderdetails = DB::table('orderdetails')->where('tableid', $tableid)->insert([
+            'order_id' => $getorders->order_id,
+            // 'menu_id' => $menu_id,
+        ]);
+        
+        // $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
+        // $createOrder = DB::table('order');
+        // if (!$gettable) {
+        //     return '<h1>busy</h1>';
+        // }
+        // $data = [
+        //     'table_id' => $id,
+        //     'isIdle' => 1
+        // ];
+        // DB::table('table')->where('table_id', $id)->update($data);
+        return view('customer/orderlist');
+    }
     function reserving(Request $request) {
         $request->validate(
             [
@@ -99,7 +110,14 @@ class CustomerController extends Controller
         $cookie = Cookie::make('menu_cookie', $cookieValue, $minutes);
         $tableid = $id;
         // dd($tableid);
-        return redirect()->route('customer.table', ['id' => $tableid])->withCookie($cookie)->with('success', 'เลือกอาหารละจ้า');
+        $notification = array(
+            'message' => 'เลือกเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('customer.table', ['id' => $tableid])
+                ->withCookie($cookie)
+                ->with($notification);
+                // ->with('success', 'เลือกอาหารละจ้า');
     }
     public function showCart(Request $request) {
         $tableid = Route::current()->parameter('id'); // $tableid = $id;
@@ -120,8 +138,14 @@ class CustomerController extends Controller
             $updatedCookieValue = json_encode($values);
             // Set the updated cookie value
             $cookie = cookie('menu_cookie', $updatedCookieValue, 10);
+            $notification = array(
+                'message' => 'ยกเลิกรายการเรียบร้อย!',
+                'alert-type' => 'success'
+            );
             // Redirect to the cart page with the updated cookie
-            return redirect(route('customer.table.cart', ['id' => $tableid]))->withCookie($cookie);
+            return redirect(route('customer.table.cart', ['id' => $tableid]))
+                    ->withCookie($cookie)
+                    ->with($notification);
         }
     }
     // public function storemenu(Request $request)

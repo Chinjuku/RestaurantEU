@@ -1,6 +1,6 @@
 <div class="tablet:pt-[120px]">
     <nav class="navbar phone:px-[30px] tablet:px-[70px] tablet:h-[100px] w-full h-[60px] flex items-center top-[80px] tablet:pt-[20px] fixed bg-lgreen z-50">
-        <div class="crop tablet:font-bold bg-white rounded-3xl items-center flex text-lgreen w-full">
+        <div class="crop font-bold bg-white rounded-3xl items-center flex text-darkgreen w-full">
             <a href="#playeat" class="z-10 phone:py-[10px] tablet:py-[20px] tablet:text-[24px] phone:px-[5px] phone:text-[14px] rounded-l-3xl text-center w-1/3"><p class="z-11">อาหารทานเล่น</p></a>
             <a href="#main" class="z-10 phone:py-[10px] tablet:py-[20px] tablet:text-[24px] phone:px-[5px] phone:text-[14px] text-center w-1/3"><p class="z-11">อาหารจานหลัก</p></a>
             <a href="#drink" class="z-10 phone:py-[10px] tablet:py-[20px] tablet:text-[24px] phone:px-[5px] phone:text-[14px] rounded-r-3xl text-center w-1/3"><p class="z-11">เครื่องดื่ม/อื่นๆ</p></a>
@@ -22,7 +22,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -44,7 +44,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -66,7 +66,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -88,7 +88,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -110,7 +110,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -132,7 +132,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -154,7 +154,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -176,7 +176,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen"></div>
                         <div class="text-center">
                             <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
-                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }}</h5>
+                            <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
                 @endif
@@ -195,7 +195,7 @@
                         <input name="menu_name" wire:model="menu_name" type="text" value="{{ $menu_name }}" readonly>
                         <input name="price" wire:model="price" type="text" value="{{ $price }}" readonly>
                         <input type="text" value="{{ $types }}" readonly>
-                        <input type="text" value="{{ $detail }}" readonly>
+                        <input type="text" class="text-[16px]" value="{{ $detail }}" readonly>
                         <div class="flex">
                             @livewire('customer.counter-menu')
                         </div>
