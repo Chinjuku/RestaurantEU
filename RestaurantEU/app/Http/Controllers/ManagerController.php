@@ -38,7 +38,11 @@ class ManagerController extends Controller
             'category_id' => $request->category_id,
             'types' => $request->types
         ]);
-        return redirect()->route('manager.menu')->with('success', 'เพิ่มเมนูใหม่เรียบร้อย');
+        $notification = array(
+            'message' => 'เพิ่มเมนูใหม่เรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manager.menu')->with($notification);
     }
     function updatemenu(Request $request, $id) {
         DB::table('menu')->where('menu_id', $id)->first();
@@ -51,11 +55,19 @@ class ManagerController extends Controller
             'types' => $request->types
         ];
         DB::table('menu')->where('menu_id', $id)->update($update);
-        return redirect()->route('manager.menu')->with('success', 'แก้ไขเมนูเรียบร้อย');
+        $notification = array(
+            'message' => 'แก้ไขเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manager.menu')->with($notification);
     }
     function deletemenu($id) {
         DB::table('menu')->where('menu_id', $id)->delete();
-        return redirect()->route('manager.menu')->with('success', 'ลบเมนูเรียบร้อย');
+        $notification = array(
+            'message' => 'ลบเมนูเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manager.menu')->with($notification);
     }
 
     function addEmployee(Request $request) {
@@ -82,11 +94,19 @@ class ManagerController extends Controller
             'roles' => $request->roles,
             'createdAt' => date('Y:m:d')
         ]);
-        return redirect()->route('manager.employee')->with('success', 'เพิ่มพนักงานใหม่เรียบร้อย');
+        $notification = array(
+            'message' => 'เพิ่มพนักงานใหม่เรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manager.employee')->with($notification);
     }
     function deleteEmployee($id) {
         DB::table('employee')->where('employee_id', $id)->delete();
-        return redirect()->route('manager.employee')->with('success', 'ลบพนักงานเรียบร้อย');
+        $notification = array(
+            'message' => 'ลบพนักงานเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manager.employee')->with($notification);
     }
     function updateEmployee(Request $request, $id) {
         // DB::table('employee')->where('employee_id', $id)->first();
@@ -98,7 +118,11 @@ class ManagerController extends Controller
             // 'createdAt' => time()
         ];
         DB::table('employee')->where('employee_id', $id)->update($update);
+        $notification = array(
+            'message' => 'แก้ไขพนักงานเรียบร้อย!',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->route('manager.employee')->with('success', "แก้ไขพนักงานเรียบร้อย");
+        return redirect()->route('manager.employee')->with($notification);
     }
 }

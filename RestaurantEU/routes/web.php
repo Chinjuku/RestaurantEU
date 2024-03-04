@@ -61,7 +61,10 @@ Route::get('/customer/reservation/done', [CustomerController::class, 'reservatio
 Route::post('/customer/reserving', [CustomerController::class, 'reserving'])->name('cus.reserve');
 
 // Order menu
+
 Route::get('customer/table/{id}', [CustomerController::class, 'tablepage'])->name('customer.table');
+Route::post('customer/table/{id}/choose', [CustomerController::class, 'chooseMenu'])->name('customer.table.choose');
 Route::get('customer/table/{id}/order', [CustomerController::class, 'customerOrder'])->name('customer.table.order');
-Route::get('customer/table/{id}/cart', [CustomerController::class, 'customerCart'])->name('customer.table.cart');
+Route::get('customer/table/{id}/clearcart/{key}', [CustomerController::class, 'clearCookie'])->name('customer.table.clearcart');
+Route::get('customer/table/{id}/cart', [CustomerController::class, 'showCart'])->name('customer.table.cart');
 Route::fallback( function() { return view('404'); });
