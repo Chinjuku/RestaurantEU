@@ -43,14 +43,15 @@ Route::get('/manager/deletemenu/{id}', [ManagerController::class, 'deletemenu'])
 
 // Chef
 Route::get('/chef/neworder', [HomeController::class, 'chefHome'])->name('chef.neworder')->middleware('is_chef');
-Route::get('/chef/ordershow/{id}', [ChefController::class, 'orderShow'])->name('chef.neworder.show')->middleware('is_chef');
+// Route::get('/chef/ordershow/{id}', [ChefController::class, 'orderShow'])->name('chef.neworder.show')->middleware('is_chef');
+Route::get('/chef/orderdone/{id}', [ChefController::class, 'clickDone'])->name('chef.cookingdone')->middleware('is_chef');
 Route::get('/chef/orderdone', [ChefController::class, 'orderdone'])->name('chef.orderdone')->middleware('is_chef');
 
 
 // Waiter
 Route::get('/waiter/readytoserve', [HomeController::class, 'waiterHome'])->name('waiter.readytoserve')->middleware('is_waiter');
 Route::get('/waiter/servedone', [WaiterController::class, 'servedone'])->name('waiter.servedone')->middleware('is_waiter');
-Route::post('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->name('waiter.served')->middleware('is_waiter');
+Route::get('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->name('waiter.served')->middleware('is_waiter');
 
 // Cashier
 Route::get('/cashier/home', [HomeController::class, 'cashierHome'])->name('cashier.home')->middleware('is_cashier');

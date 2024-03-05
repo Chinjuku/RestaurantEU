@@ -66,18 +66,4 @@
 
 
     </div>
-    <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}"
-            switch (type) {
-                case 'success':
-                    toastr.options.timeOut = 7000;
-                    toastr.success("{{ Session::get('message') }}");
-                    var audio = new Audio('audio.mp3');
-                    audio.play();
-
-                    break;
-            }
-        @endif
-    </script>
 @endsection

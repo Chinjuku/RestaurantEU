@@ -14,4 +14,14 @@ class ChefController extends Controller
         $changestatus = DB::table('orderdetails')->where('order_id', $orderid and 'table_id', $tableid)->update(['order_status', 'serving']);
         return view('chef/cook', compact('changestatus'));
     }
+    function clickDone($id) {
+        DB::table('order')
+            ->where('order_id', $id)
+            ->update(['status' => 'serving']);
+        $notification = array(
+            'message' => 'ทำอาหารเสร็จสิ้น',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('chef.neworder')->with($notification);
+    }
 }

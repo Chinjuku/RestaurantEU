@@ -49,7 +49,7 @@ class CustomerController extends Controller
     // }
     function customerOrder(Request $request, $tableid) {
         // $id = Route::current()->parameter('id');
-        $cookieData = json_decode(request()->cookie('menu_cookie'), true);
+        $cookieData = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
         $getOrderID = DB::table('order')->insertGetId([
             'table_id' => $tableid,
             'order_time' => now(),
@@ -120,6 +120,7 @@ class CustomerController extends Controller
         return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
     }
     public function chooseMenu(Request $request, $id) {
+        $tableid = $id;
         $minutes = 20;
         $values = [
             'menu_ID' => $request->menu_id,
@@ -127,13 +128,12 @@ class CustomerController extends Controller
             'prices' => $request->price,
             'count' => $request->count, 
         ];
-        $existingCookie = request()->cookie('menu_cookie');
+        $existingCookie = request()->cookie('menu_cookie_'. $tableid);
         $existingOrders = json_decode($existingCookie, true);
         $existingOrders[] = $values;
         $cookieValue = json_encode($existingOrders);
-        $cookie = Cookie::make('menu_cookie', $cookieValue, $minutes);
-        $tableid = $id;
-        // dd($tableid);
+        $cookie = Cookie::make('menu_cookie_'. $tableid, $cookieValue, $minutes);
+        // dd($cookie);
         $notification = array(
             'message' => 'เลือกเมนูเรียบร้อย!',
             'alert-type' => 'success'
@@ -145,13 +145,14 @@ class CustomerController extends Controller
     }
     public function showCart(Request $request) {
         $tableid = Route::current()->parameter('id'); // $tableid = $id;
-        $orders = json_decode(request()->cookie('menu_cookie'), true);
+        // dd($tableid);
+        $orders = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
         // dd($orders);
         return view('customer/cart', compact('orders', 'tableid'));
     }
     public function clearCookie(Request $request, $tableid, $key) {
     {
-            $cookieValue = request()->cookie('menu_cookie');
+            $cookieValue = request()->cookie('menu_cookie_'. $tableid);
             $values = json_decode($cookieValue, true);
             foreach ($values as $keys => $value) {
                 if ($keys == $key) {
@@ -161,7 +162,7 @@ class CustomerController extends Controller
             // dd($values);
             $updatedCookieValue = json_encode($values);
             // Set the updated cookie value
-            $cookie = cookie('menu_cookie', $updatedCookieValue, 20);
+            $cookie = cookie('menu_cookie_'. $tableid, $updatedCookieValue, 20);
             $notification = array(
                 'message' => 'ยกเลิกรายการเรียบร้อย!',
                 'alert-type' => 'success'

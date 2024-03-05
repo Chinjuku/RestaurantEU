@@ -1,7 +1,7 @@
 <div class="flex gap-5">
     <div>
-        <input class="bg-transparent border-none" type="hidden" value="{{ $price * $count }}" readonly>
-        <p>{{ $price * $count }} บาท</p>
+        <input class="bg-transparent border-none" type="hidden" value="{{ intval($price) * intval($count) }}" readonly>
+        <p>{{ intval($price) * intval($count) }} บาท</p>
     </div>
     <div>
         <input class="bg-transparent border-none" type="hidden" value="{{ $count }}" readonly>

@@ -36,7 +36,7 @@
                 @csrf
                 <div class="mx-auto w-4/5 flex flex-col px-5 py-3 phone:w-full">
                     <label class="text-lightcream text-[24px] phone:text-[16px] tablet:text-l">ชื่อ</label>
-                    <input type="text" name="name" placeholder="ชื่อ" value="{{ old('name') }}" class="text-white bg-transparent bg-transparent border-0 border-b-2 border-yellow-50">
+                    <input type="text" name="name" placeholder="ชื่อ" value="{{ old('name') }}" class="text-white bg-transparent border-0 border-b-2 border-yellow-50">
                     @error('name')
                         <span class="text-red-600" role="alert">
                             <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="mx-auto w-4/5 flex flex-col px-5 py-3 phone:w-full">
                     <label class="text-lightcream text-[24px] phone:text-[16px] tablet:text-l">เวลา</label>
-                    <input type="time" name="time" value="{{ old('time') }}" class="text-white bg-transparent border-0 border-b-2 border-yellow-50 peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
+                    <input type="time" name="time" value="{{ old('time') }}" class="text-white border-b-2 border-yellow-50 peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
                     @error('time')
                         <span class="text-red-600" role="alert">
                             <strong>{{ $message }}</strong>

@@ -18,7 +18,7 @@
     <nav class="bg-darkgreen fixed w-full text-lightcream p-4 h-[70px] flex items-center z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div>
-                <a class="font-bold text-3xl" href="{{ url('/') }}">
+                <a class="font-bold text-4xl" href="{{ url('/') }}">
                     @yield('page_name')
                 </a>
             </div>
@@ -27,7 +27,7 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
+                                <a class="nav-link text-[30px] bg-lightcream hover:bg-cream py-2 px-4 text-darkgreen duration-150 rounded-lg" href="{{ route('login') }}">{{ __('เข้าสู่ระบบ') }}</a>
                             </li>
                         @endif
                         {{-- @if (Route::has('register'))
@@ -57,11 +57,11 @@
                             </button>
                             
                             <!-- Dropdown menu -->
-                            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <div id="dropdown" class="z-10 hidden bg-lgreen hover:bg-darkgreen divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                                 <ul class="py-[5px] text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                                   <li>
                                     <div>
-                                        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="{{ route('logout') }}"
+                                        <a class="block px-4 py-2 bg-lgreen hover:bg-darkgreen duration-150 text-2xl dark:hover:bg-gray-600 text-white" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('ออกจากระบบ') }}
