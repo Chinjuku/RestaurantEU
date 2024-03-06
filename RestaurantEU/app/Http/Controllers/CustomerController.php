@@ -17,7 +17,8 @@ class CustomerController extends Controller
         return view('customer/reservation/home');
     }
     function reservationdone() {
-        return view('customer/reservation/done');
+        $time = Route::current()->parameter('time');
+        return view('customer/reservation/done', compact('time'));
     }
     function tablepage() {
         $tableid = Route::current()->parameter('id');
@@ -32,21 +33,6 @@ class CustomerController extends Controller
         ];
         return view('customer/home', compact('tableid'));
     }
-    // function customerCart() {
-    //     $id = Route::current()->parameter('id');
-    //     // dd($id);
-    //     $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-    //     $createOrder = DB::table('order');
-    //     if (!$gettable) {
-    //         return '<h1>busy</h1>';
-    //     }
-    //     $data = [
-    //         'table_id' => $id,
-    //         'isIdle' => 1
-    //     ];
-    //     // DB::table('table')->where('table_id', $id)->update($data);
-    //     return view('customer/cart', compact('id'));
-    // }
     function customerOrder(Request $request, $tableid) {
         // $id = Route::current()->parameter('id');
         $cookieData = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
@@ -82,17 +68,6 @@ class CustomerController extends Controller
             'message' => 'สั่งเมนูเรียบร้อย!',
             'alert-type' => 'success'
         );
-        
-        // $gettable = DB::table('table')->where('table_id', $id)->where('isIdle', 0)->first();
-        // $createOrder = DB::table('order');
-        // if (!$gettable) {
-        //     return '<h1>busy</h1>';
-        // }
-        // $data = [
-        //     'table_id' => $id,
-        //     'isIdle' => 1
-        // ];
-        // DB::table('table')->where('table_id', $id)->update($data);
         return view('customer/orderlist')->with($notification);
     }
     function reserving(Request $request) {
@@ -117,7 +92,16 @@ class CustomerController extends Controller
             'time' => $request->time,
             'end_time' => date('H:i:s', strtotime($request->time) + 15 * 60)
         ]);
-        return redirect()->route('reservation.done'); // รอเชื่อมหน้าหลังจอง
+        $time = date('H:i:s', strtotime($request->time) + 15 * 60);
+        return redirect()->route('reservation.done', ['time' => $time]); // รอเชื่อมหน้าหลังจอง
+    }
+    public function deletereserve($id) {
+        DB::table('reservation')->where('reserveid', $id)->delete();
+        $notification = array(
+            'message' => 'ยกเลิกรายการเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('showreserve')->with($notification);
     }
     public function chooseMenu(Request $request, $id) {
         $tableid = $id;
@@ -133,7 +117,6 @@ class CustomerController extends Controller
         $existingOrders[] = $values;
         $cookieValue = json_encode($existingOrders);
         $cookie = Cookie::make('menu_cookie_'. $tableid, $cookieValue, $minutes);
-        // dd($cookie);
         $notification = array(
             'message' => 'เลือกเมนูเรียบร้อย!',
             'alert-type' => 'success'
@@ -141,7 +124,6 @@ class CustomerController extends Controller
         return redirect()->route('customer.table', ['id' => $tableid])
                 ->withCookie($cookie)
                 ->with($notification);
-                // ->with('success', 'เลือกอาหารละจ้า');
     }
     public function showCart(Request $request) {
         $tableid = Route::current()->parameter('id'); // $tableid = $id;
@@ -159,15 +141,12 @@ class CustomerController extends Controller
                     unset($values[$keys]);
                 }
             }
-            // dd($values);
             $updatedCookieValue = json_encode($values);
-            // Set the updated cookie value
             $cookie = cookie('menu_cookie_'. $tableid, $updatedCookieValue, 20);
             $notification = array(
                 'message' => 'ยกเลิกรายการเรียบร้อย!',
                 'alert-type' => 'success'
             );
-            // Redirect to the cart page with the updated cookie
             return redirect(route('customer.table.cart', ['id' => $tableid]))
                     ->withCookie($cookie)
                     ->with($notification);

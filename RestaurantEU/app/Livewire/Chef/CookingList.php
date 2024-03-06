@@ -24,7 +24,7 @@ class CookingList extends Component
         $this->gettableid = $orderfromid->pluck('table_id')->first();
         $this->getid = $orderfromid->pluck('order_id')->first();
         $this->getstatus = $orderfromid->pluck('order_status')->first();
-        $this->gettime = Carbon::parse($orderfromid->pluck('order_time')->first())->locale('th')->format('H:i:s');
+        $this->gettime = Carbon::parse($orderfromid->pluck('order_time')->first())->locale('th')->format('H:i');
         // $this->getorderid = $orderfromid->pluck('order_id')->first();
     }
     public function clickToDone($orderid, $menuid) {
@@ -43,7 +43,7 @@ class CookingList extends Component
         $this->gettableid = $orderfromid->pluck('table_id')->first();
         $this->getid = $orderfromid->pluck('order_id')->first();
         $this->getstatus = $orderfromid->pluck('order_status')->first();
-        $this->gettime = Carbon::parse($orderfromid->pluck('order_time')->first())->locale('th')->format('H:i:s');
+        $this->gettime = Carbon::parse($orderfromid->pluck('order_time')->first())->locale('th')->format('H:i');
     }
     public function placeholder() {
         return view('loading');
@@ -55,7 +55,7 @@ class CookingList extends Component
             ->whereIn('status', ['pending', 'cooking'])
             ->get()
             ->map(function ($order) {
-                $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i:s');
+                $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i');
                 return $order;
         });
         DB::table('orderdetails')->where('order_status', 'in-queue')->update([

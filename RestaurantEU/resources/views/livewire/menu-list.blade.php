@@ -1,5 +1,5 @@
 <div class="show relative" >
-    <div wire:loading class="w-full justify-center flex mt-[-40px] z-[120]">
+    <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
         @include('loading')
     </div>
     
@@ -109,53 +109,53 @@
     </div>
     <table class="bg-transparent w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-gray-700 border-b bg-transparent border-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr class="text-[22px] text-wrap bg-transparent">
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px] w-[130px]">
+            <tr class="text-[22px] pc:text-[26px] text-wrap bg-transparent">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px] w-[130px]">
                     รหัส
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     ชื่อเมนู
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     ราคา
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     หมวดหมู่
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     ประเภท
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     แก้ไข
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     ลบ
                 </th>
             </tr>
         </thead>
         <tbody>
             @forelse ($menus as $item)
-            <tr class="bg-transparent text-wrap text-lg laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-[10px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-transparent text-wrap text-lg pc:text-[20px] laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->menu_id}}
                 </th>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     {{$item->menu_name}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     {{$item->price}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     {{$item->category_name}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     @if ($item->types == null)
                     {{ "-" }}
                     @else
                     {{$item->types}}
                     @endif
                 </td>
-                <td class="pl-[28px] py-[10px] laptop:py-[8px] laptop:text-center">
+                <td class="pl-[28px] py-[10px] pc:py-[12px] laptop:py-[8px] laptop:text-center">
                     {{-- wire:click="editStudent({{$item->employee_id}})" --}}
                     <button type="button" wire:click="toggleModal2({{$item->menu_id}})"  class="popupButton">
                         <svg width="24" height="24" viewBox="0 0 35 35" fill="none" class="hover:fill-red-600 xmlns="http://www.w3.org/2000/svg">
@@ -241,7 +241,7 @@
                     </div>
                 @endif
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     <a href="{{ route('manager.deletemenu', $item->menu_id) }}">
                         <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.3335 12.8333H36.6668" stroke="#B93636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

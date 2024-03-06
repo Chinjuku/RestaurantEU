@@ -39,15 +39,30 @@
                     @else
                     @if ( Auth::user()->name == 'Manager')
                         <li>
-                        <a href="{{ route('manager.home') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px] dark:hover:bg-gray-600 dark:hover:text-white">แดชบอร์ด</a>
+                        <a href="{{ route('manager.home') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">แดชบอร์ด</a>
                         </li>
                         <li>
-                        <a href="{{ route('manager.employee') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px] dark:hover:bg-gray-600 dark:hover:text-white">จัดการพนักงาน</a>
+                        <a href="{{ route('manager.employee') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">จัดการพนักงาน</a>
                         </li>
                         <li>
-                        <a href="{{ route('manager.menu') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px] border-b border-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">จัดการเมนู</a>
+                        <a href="{{ route('manager.menu') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">จัดการเมนู</a>
+                        </li>
+                    @elseif ( Auth::user()->name == 'Waiter')
+                        <li>
+                            <a href="{{ route('waiter.readytoserve') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">รายการที่เสิร์ฟ</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('showreserve') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">ดูคิวจอง</a>
+                        </li>
+                    @elseif ( Auth::user()->name == 'Cashier')
+                        <li>
+                            <a href="{{ route('cashier.home') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">หน้าแคชเชียร์</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('showreserve') }}" class="block px-4 py-2 hover:bg-lightcream hover:rounded-xl hover:text-darkgreen text-[18px]">ดูคิวจอง</a>
                         </li>
                     @endif
+                    
                     <li>
                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-darkgreen hover:text-green gap-2 text-lg flex bg-lightcream hover:bg-cream focus:ring-4 focus:outline-none font-bold focus:ring-blue-300 rounded-lg px-5 py-2.5 text-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                             {{ Auth::user()->name }} 
