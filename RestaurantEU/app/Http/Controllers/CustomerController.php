@@ -34,7 +34,8 @@ class CustomerController extends Controller
         return view('customer/home', compact('tableid'));
     }
     function customerOrder(Request $request, $tableid) {
-        // $id = Route::current()->parameter('id');
+        $id = Route::current()->parameter('id');
+        // dd($id);
         $cookieData = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
         $getOrderID = DB::table('order')->insertGetId([
             'table_id' => $tableid,
@@ -70,7 +71,18 @@ class CustomerController extends Controller
             'message' => 'สั่งเมนูเรียบร้อย!',
             'alert-type' => 'success'
         );
-        return view('customer/orderlist')->with($notification);
+        return redirect()->route('customer.orderlist', ['id' => $id , 'orderid' => $getOrderID])->with($notification);
+    }
+    function orderPage() {
+        $id = Route::current()->parameter('id');                
+        $orderid = Route::current()->parameter('orderid');
+        $orderlists = DB::table('order')
+                        ->join('orderdetails', 'order.order_id', '=', 'orderdetails.order_id')
+                        ->join('menu', 'orderdetails.menu_id', '=', 'menu.menu_id')
+                        ->where('order.order_id', $orderid)
+                        ->get();
+        // dd($id, $orderid, $orderlists);
+        return view('customer/orderlist', compact('orderlists'));
     }
     function reserving(Request $request) {
         $request->validate(

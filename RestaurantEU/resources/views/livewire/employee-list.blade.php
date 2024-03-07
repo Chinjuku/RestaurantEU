@@ -11,11 +11,10 @@
                 <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </div>
-                <input wire:model.lazy="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อพนักงาน">
+                <input wire:model.live="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อพนักงาน">
             </div>
         </div>
 
-        {{-- <livewire:add-employee /> --}}
         <div>
             <button type="button" wire:click="toggleModal" class="text-white scale-[1.4] bg-darkgreen hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+ เพิ่มพนักงาน</button>
 
@@ -23,9 +22,6 @@
                 <div id="createEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75">
                     <div class="flex items-center justify-center min-h-screen">
                         <div class="relative z-10 w-full max-w-xl p-6 bg-lightcream rounded-lg shadow-xl">
-                            {{-- <button wire:click="$set('showModal', false)" class="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700 focus:outline-none">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </button> --}}
                             <form action="{{ route('manager.addem') }}" method="POST" class="max-w-sm mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
                                 <h1 class="text-5xl text-center font-bold">เพิ่มพนักงาน</h1>
                                 @csrf

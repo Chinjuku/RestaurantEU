@@ -12,6 +12,7 @@ class BillList extends Component
     public $table_id, $order_id, $totalprice, $order_time, $bill_id, $showbill, $allprice;
     public function showBill($id) {
         // change order status
+        sleep(0.5);
         $this->open = true;
         $showbill = DB::table('bill')
                     ->join('order', 'bill.order_id', '=' ,'order.order_id')
