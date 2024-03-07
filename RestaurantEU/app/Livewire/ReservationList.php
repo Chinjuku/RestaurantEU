@@ -14,6 +14,16 @@ class ReservationList extends Component
 
     protected $paginationTheme = 'tailwind';
 
+    public function deleteReserve($id) 
+    {
+        sleep(0);
+        DB::table('reservation')->where('reserveid', $id)->delete();
+        $notification = array(
+            'message' => 'ยกเลิกรายการเรียบร้อย!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('showreserve')->with($notification);
+    }
     public function placeholder()
     {
         return view('loading');

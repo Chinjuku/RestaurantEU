@@ -7,12 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class WaiterController extends Controller
 {
-    // function serving() {
-    //     DB::table('orderdetails')->where('order_status', 'serving')->get();
-    //     return view('waiter/serving');
-    // }
     function servedone() {
-        // DB::table('orderdetails')->where('order_status', 'done')->get();
         return view('waiter/servedone');
     }
     function updateserved($id) {

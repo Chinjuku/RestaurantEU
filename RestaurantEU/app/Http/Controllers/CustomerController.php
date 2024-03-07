@@ -58,11 +58,13 @@ class CustomerController extends Controller
             ->join('menu', 'orderdetails.menu_id', '=', 'menu.menu_id')
             ->where('order_id', $getOrderID)
             ->sum(DB::raw('quantity * price'));
+        $total = $totalAmount + $totalAmount*0.07 + $totalAmount*0.1;
         DB::table('bill')->insert([
             'table_id' => $tableid,
             'order_id' => $getOrderID,
-            'totalprice' => $totalAmount,
+            'allprice' => $totalAmount,
             'isPaid' => false,
+            'totalprice' => $total,
         ]);
         $notification = array(
             'message' => 'สั่งเมนูเรียบร้อย!',
@@ -94,14 +96,6 @@ class CustomerController extends Controller
         ]);
         $time = date('H:i:s', strtotime($request->time) + 15 * 60);
         return redirect()->route('reservation.done', ['time' => $time]); // รอเชื่อมหน้าหลังจอง
-    }
-    public function deletereserve($id) {
-        DB::table('reservation')->where('reserveid', $id)->delete();
-        $notification = array(
-            'message' => 'ยกเลิกรายการเรียบร้อย!',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('showreserve')->with($notification);
     }
     public function chooseMenu(Request $request, $id) {
         $tableid = $id;
@@ -152,22 +146,4 @@ class CustomerController extends Controller
                     ->with($notification);
         }
     }
-    // public function storemenu(Request $request)
-    // {
-    //     $id = Route::current()->parameter('id');
-    //     $order = DB::table('order')->insert([
-    //         'table_id' => $id,
-    //         'order_time' => time()
-    //     ]);
-    //     $orderdetails = DB::table('orderdetails');
-    //     foreach ($request->menus as $menu) {
-    //         $order->$orderdetails->create([
-    //             'menu_id' => $menu['id'],
-    //             'quantity' => $menu['quantity'],
-    //             'order_status' => 'in-line',
-    //         ]);
-    //     }
-    //     return response()->json(['message' => 'Order created successfully'], 201);
-    // }
-
 }

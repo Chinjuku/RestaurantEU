@@ -19,7 +19,6 @@ use App\Http\Controllers\ChefController;
 |
 */
 
-// Route::get('/login', [AuthController::class, 'loginForm']);
 // Route::get('/register', [AuthenController::class, 'registerForm'])->name('register.create');
 // Route::post('/register', [AuthenController::class, 'register']);
 
@@ -83,4 +82,3 @@ Route::get('showreserve', [HomeController::class, 'showReserve'])->name('showres
 // Route::group(['middleware' => ['is_cashier', 'is_waiter']], function() {
 //     Route::get('showreserve', [HomeController::class, 'showReserve'])->name('showreserve');
 // });
-Route::get('reserve/delete/{id}', [CustomerController::class, 'deletereserve'])->name('reserve.delete');
