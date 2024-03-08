@@ -1,7 +1,7 @@
 <div class="show relative" >
-    <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
+    {{-- <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
         @include('loading')
-    </div>
+    </div> --}}
     
     <div class=" flex justify-between items-center h-[120px]">
         <div class="relative z-0 w-[18%] group">
@@ -136,19 +136,19 @@
         <tbody>
             @forelse ($menus as $item)
             <tr class="bg-transparent text-wrap text-lg pc:text-[20px] laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->menu_id}}
                 </th>
-                <td class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->menu_name}}
                 </td>
-                <td class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->price}}
                 </td>
-                <td class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->category_name}}
                 </td>
-                <td class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     @if ($item->types == null)
                     {{ "-" }}
                     @else

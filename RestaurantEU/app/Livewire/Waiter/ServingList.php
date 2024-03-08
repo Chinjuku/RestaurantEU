@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Waiter;
 use Illuminate\Support\Facades\DB;
+use App\Events\OrderListEvent;
 use Livewire\Component;
 use Illuminate\Support\Carbon;
 
@@ -43,6 +44,7 @@ class ServingList extends Component
         $this->getid = $orderfromid->pluck('order_id')->first();
         $this->getstatus = $orderfromid->pluck('order_status')->first();
         $this->gettime = Carbon::parse($orderfromid->pluck('order_time')->first())->locale('th')->format('H:i');
+        event(new OrderListEvent($this->getid, $this->getstatus));
     }
     public function placeholder() {
         return view('loading');

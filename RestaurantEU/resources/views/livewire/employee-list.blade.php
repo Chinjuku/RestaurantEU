@@ -1,7 +1,7 @@
 <div class="show relative" >
-    <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
+    {{-- <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
         @include('loading')
-    </div>
+    </div> --}}
     
     <div class=" flex justify-between items-center h-[120px]">
         <h1 class="text-5xl pb-4 font-bold">พนักงาน</h1>
@@ -93,22 +93,22 @@
         <tbody>
             @forelse ($employees as $item)
             <tr class="bg-transparent text-wrap text-lg laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-[10px] pc:text-[20px] pc:py-[12px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-[10px] pc:text-[20px] pc:py-[12px] laptop:py-[6px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->employee_id}}
                 </th>
-                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->firstname}}
                 </td>
-                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->lastname}}
                 </td>
-                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px] max-[1441px]:opacity-0">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px] max-[1441px]:opacity-0">
                     {{$item->phone}}
                 </td>
-                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->roles}}
                 </td>
-                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->createdAt}}
                 </td>
                 <td class="pl-[28px] py-[10px] pc:py-[12px] laptop:py-[8px] laptop:text-center">

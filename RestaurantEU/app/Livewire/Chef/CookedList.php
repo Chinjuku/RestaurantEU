@@ -38,7 +38,7 @@ class CookedList extends Component
                 $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i');
                 return $order;
         });
-        // DB::table('orderdetails')->where('order_status', 'in-queue')->update([
+        // DB::table('orderdetails')->where('order_status', 'serving')->update([
         //     'order_status' => 'in-process'
         // ]);
         return view('livewire.chef.cooked-list', compact('getorder'));

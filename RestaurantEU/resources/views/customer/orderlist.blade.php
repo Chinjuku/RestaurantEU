@@ -7,6 +7,15 @@
     <div class="h-screen gap-1">
         <!-- แต่ละรายการ1 -->
         @foreach ($orderlists as $item)
+            @if ($item->status == 'complete')
+                <div class="mt-10 text-2xl flex h-full w-full justify-center items-center flex-col gap-4">
+                    <p>ออเดอร์ของลูกค้าถูกเสิร์ฟเสร็จสิ้นแล้ว</p>
+                    <a class="bg-darkgreen py-3 px-4 text-white rounded-lg"
+                        href="{{ route('customer.table', $item->table_id) }}">กลับสู่หน้าหลัก</a>
+                </div>
+            @break
+
+        @else
             <div class="group flex flex-col bg-[#FFF9F1] mx-[7%] my-[4%] px-[5%] py-[2%] border border-black rounded-2xl"
                 tabindex="1">
                 <div class=" flex justify-between  ">
@@ -17,16 +26,16 @@
                         <!-- leftbot -->
                         <div class="flex items-center">
                             @if ($item->order_status == 'in-queue')
-                                <div><svg fill="#B93636" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1"
-                                        data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                                <div><svg fill="#B93636" width="30px" height="30px" viewBox="0 0 24 24"
+                                        id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z" />
                                     </svg></div>
                                 <div class="ml-[10%] w-[110px] text-[#B93636]">อยู่ในคิว</div>
                             @elseif ($item->order_status == 'in-process')
                                 <div class="p-[4%]"><svg width="30px" height="30px" class="stroke-orangee"
-                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1" version="1.1"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink">
 
                                         <g>
@@ -61,8 +70,8 @@
                                 <div class="ml-[10%] w-[110px] text-orangee">เตรียมอาหาร</div>
                             @elseif ($item->order_status == 'serving')
                                 <div class="p-[4%]"><svg width="30px" height="30px" class="stroke-yellow-300"
-                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1" version="1.1"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink">
 
                                         <g>
@@ -115,8 +124,9 @@
                         <!-- status1 -->
                         <div class="flex mx-auto  justify-center">
                             @if ($item->order_status == 'in-queue')
-                                <div class=" p-[4%]"><svg fill="#B93636" width="30px" height="30px" viewBox="0 0 24 24"
-                                        id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                                <div class=" p-[4%]"><svg fill="#B93636" width="30px" height="30px"
+                                        viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"
+                                        xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z" />
                                     </svg></div>
@@ -125,8 +135,8 @@
                                     <div class="text-[#B93636]">เวลา 20.00 น.</div>
                                 </div>
                             @else
-                                <div class=" p-[4%]"><svg width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1"
-                                        data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
+                                <div class=" p-[4%]"><svg width="30px" height="30px" viewBox="0 0 24 24"
+                                        id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z" />
                                     </svg></div>
@@ -142,8 +152,8 @@
                             <!-- left -->
                             @if ($item->order_status == 'in-process')
                                 <div class="p-[4%]"><svg width="30px" height="30px" class="stroke-orangee"
-                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1" version="1.1"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g>
                                             <path
@@ -274,40 +284,41 @@
                         <div class="flex mx-auto justify-center ">
                             <!-- left -->
                             @if ($item->order_status == 'done')
-                            <div class="p-[4%]">
+                                <div class="p-[4%]">
 
-                                <svg fill="#000000" width="30px" height="30px" class="stroke-green-500" viewBox="0 0 50 50"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15z" />
-                                    <path d="M23 32.4l-8.7-8.7 1.4-1.4 7.3 7.3 11.3-11.3 1.4 1.4z" />
-                                </svg>
-                            </div>
-                            <!-- right -->
-                            <div class="block py-[1%] px-[4%]">
-                                <div class="text-green-500">เสร็จสิ้น</div>
-                                <div class="text-green-500">เวลา 20.00 น.</div>
-                            </div>
+                                    <svg fill="#000000" width="30px" height="30px" class="stroke-green-500"
+                                        viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15z" />
+                                        <path d="M23 32.4l-8.7-8.7 1.4-1.4 7.3 7.3 11.3-11.3 1.4 1.4z" />
+                                    </svg>
+                                </div>
+                                <!-- right -->
+                                <div class="block py-[1%] px-[4%]">
+                                    <div class="text-green-500">เสร็จสิ้น</div>
+                                    <div class="text-green-500">เวลา 20.00 น.</div>
+                                </div>
                             @else
-                            <div class="p-[4%]">
+                                <div class="p-[4%]">
 
-                                <svg fill="#000000" width="30px" height="30px" viewBox="0 0 50 50"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15z" />
-                                    <path d="M23 32.4l-8.7-8.7 1.4-1.4 7.3 7.3 11.3-11.3 1.4 1.4z" />
-                                </svg>
-                            </div>
-                            <!-- right -->
-                            <div class="block py-[1%] px-[4%]">
-                                <div>เสร็จสิ้น</div>
-                                <div>เวลา 20.00 น.</div>
-                            </div>
+                                    <svg fill="#000000" width="30px" height="30px" viewBox="0 0 50 50"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15z" />
+                                        <path d="M23 32.4l-8.7-8.7 1.4-1.4 7.3 7.3 11.3-11.3 1.4 1.4z" />
+                                    </svg>
+                                </div>
+                                <!-- right -->
+                                <div class="block py-[1%] px-[4%]">
+                                    <div>เสร็จสิ้น</div>
+                                    <div>เวลา 20.00 น.</div>
+                                </div>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        @endif
+    @endforeach
+</div>
 @endsection

@@ -29,7 +29,34 @@ class HomeController extends Controller
     }
     public function managerHome()
     {
-        return view('manager/dashboard');
+        // Get all orders
+        $allorder = DB::table('bill')->join('order', 'bill.order_id', '=', 'order.order_id')->get()->count('order_id');
+        // Allin db
+        $getall = DB::table('bill')->join('order', 'bill.order_id', '=', 'order.order_id')
+            ->join('orderdetails', 'orderdetails.order_id', '=', 'order.order_id')
+            ->join('menu', 'menu.menu_id', '=', 'orderdetails.menu_id')
+            ->get()
+            ->map(function ($time) {
+                $time->formattedOrderTime = Carbon::parse($time->order_time)->locale('th')->format('Y-m-d');
+            return $time; 
+        });
+        $currentDate = Carbon::now()->locale('th')->format('Y-m-d');
+        //get billdate and totalprice
+        $weekanddate = DB::table('bill')
+        ->join('order', 'bill.order_id', '=', 'order.order_id')->get()
+        ->map(function ($time) {
+            $time->formatDate = Carbon::parse($time->order_time)->locale('th')->format('Y-m-d');
+        return $time;})
+        ->map(function ($time) {
+            $time->formatDDDD = Carbon::parse($time->order_time)->locale('th')->isoFormat('dddd');
+        return $time;
+        });
+        $totalperday = $weekanddate
+            ->where('formatDate', $currentDate)
+            ->sum('totalprice'); 
+        
+        // dd($currentDate, $totalperday, $getall, $weekanddate, $allorder);
+        return view('manager/dashboard', compact('allorder'));
     }
 
     public function chefHome()

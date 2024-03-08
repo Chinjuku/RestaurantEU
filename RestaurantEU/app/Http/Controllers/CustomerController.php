@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderListEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -24,13 +25,13 @@ class CustomerController extends Controller
         $tableid = Route::current()->parameter('id');
         $gettable = DB::table('table')->where('table_id', $tableid)->where('isIdle', 0)->first();
         $createOrder = DB::table('order');
-        if (!$gettable) {
-            return '<h1>busy</h1>';
-        }
-        $data = [
-            'table_id' => $tableid,
-            'isIdle' => 1
-        ];
+        // if (!$gettable) {
+        //     return '<h1></h1>';
+        // }
+        // $data = [
+        //     'table_id' => $tableid,
+        //     'isIdle' => 1
+        // ];
         return view('customer/home', compact('tableid'));
     }
     function customerOrder(Request $request, $tableid) {
@@ -133,9 +134,8 @@ class CustomerController extends Controller
     }
     public function showCart(Request $request) {
         $tableid = Route::current()->parameter('id'); // $tableid = $id;
-        // dd($tableid);
         $orders = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
-        // dd($orders);
+        // dd($orders, $tableid);
         return view('customer/cart', compact('orders', 'tableid'));
     }
     public function clearCookie(Request $request, $tableid, $key) {
