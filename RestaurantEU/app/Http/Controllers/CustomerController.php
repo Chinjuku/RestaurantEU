@@ -35,8 +35,9 @@ class CustomerController extends Controller
         return view('customer/home', compact('tableid'));
     }
     function customerOrder(Request $request, $tableid) {
+        date_default_timezone_set('Asia/Bangkok');
         $id = Route::current()->parameter('id');
-        // dd($id);
+        // dd(now());
         $cookieData = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
         $getOrderID = DB::table('order')->insertGetId([
             'table_id' => $tableid,

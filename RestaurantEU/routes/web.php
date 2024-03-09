@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\WaiterController;
 use App\Http\Controllers\ChefController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,8 @@ Route::get('/', [HomeController::class, 'index'])->name('guest');
 Route::group(['middleware' => 'is_manager'], function() {
     // Dashboard Routes
     Route::get('/manager/dashboard', [HomeController::class, 'managerHome'])->name('manager.home');
+    Route::get('/manager/dashboard/totalpricechart', [DashboardController::class, 'dashboardTotalPriceChart']);
+    Route::get('/manager/dashboard/time', [DashboardController::class, 'dashboardTime']);
     // Manage Employee Routes
     Route::get('/manager/manageemployee', [ManagerController::class, 'manageemployee'])->name('manager.employee');
     Route::post('/manager/addemployee', [ManagerController::class,'addEmployee'])->name('manager.addem');

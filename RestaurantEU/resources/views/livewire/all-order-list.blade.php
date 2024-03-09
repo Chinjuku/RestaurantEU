@@ -1,5 +1,5 @@
-<div class="bg-lightcream flex justify-start items-start">
-    <div class="border border-black rounded-3xl m-10 px-20 py-5 w-full">
+<div class="bg-lightcream flex justify-start items-start my-1 h-full">
+    <div class="border border-black rounded-3xl m-10 px-20 py-7 w-full">
         <table class="w-full text-center table-auto min-w-max text-3xl laptop:text-[20px] ">
             <thead>
                 <tr>
@@ -13,10 +13,10 @@
             <tbody>
                 @foreach ($allorder as $index => $item)
                 <tr>
-                    <th class="py-1">{{ $index+1 }}</th>
-                    <th class="py-1"># {{ $item->order_id }}</th>
-                    <th class="py-1">{{ $item->totalprice }}</th>
-                    <th class="py-1">{{ $item->formatDate }}</th>
+                    <th class="py-2">{{ $index+1 }}</th>
+                    <th class="py-2"># {{ $item->order_id }}</th>
+                    <th class="py-2">{{ $item->totalprice }}</th>
+                    <th class="py-2">{{ $item->formatDate }}</th>
                 </tr>
                 @endforeach
             </tbody>

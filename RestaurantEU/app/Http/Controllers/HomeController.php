@@ -40,23 +40,23 @@ class HomeController extends Controller
                 $time->formattedOrderTime = Carbon::parse($time->order_time)->locale('th')->format('Y-m-d');
             return $time; 
         });
-        $currentDate = Carbon::now()->locale('th')->format('Y-m-d');
-        //get billdate and totalprice
-        $weekanddate = DB::table('bill')
-        ->join('order', 'bill.order_id', '=', 'order.order_id')->get()
-        ->map(function ($time) {
-            $time->formatDate = Carbon::parse($time->order_time)->locale('th')->format('Y-m-d');
-        return $time;})
-        ->map(function ($time) {
-            $time->formatDDDD = Carbon::parse($time->order_time)->locale('th')->isoFormat('dddd');
-        return $time;
-        });
-        $totalperday = $weekanddate
-            ->where('formatDate', $currentDate)
-            ->sum('totalprice'); 
-        
-        // dd($currentDate, $totalperday, $getall, $weekanddate, $allorder);
-        return view('manager/dashboard', compact('allorder'));
+
+
+        // $totalperday = $weekanddate // current date totalprice
+        //     ->where('formatDate', now())
+        //     ->sum('totalprice');
+        $billprices = DB::table('bill')->get()->sum('totalprice');
+        $popularFoods = DB::table('order')
+            ->join('orderdetails', 'orderdetails.order_id', '=', 'order.order_id')
+            ->join('menu','menu.menu_id', '=', 'orderdetails.menu_id')
+            ->select('orderdetails.menu_id', DB::raw('SUM(orderdetails.quantity) as totalQuantity'), 'menu.menu_name')
+            ->groupBy('orderdetails.menu_id', 'menu.menu_name')
+            ->orderByDesc('totalQuantity')->limit(5)
+            ->get();
+        // dd($totalperday, $getall, $weekanddate, $billprices, $allorder, $popularFoods);
+        return view('manager/dashboard', compact(
+            'allorder', 'billprices', 'popularFoods'
+        ));
     }
 
     public function chefHome()
