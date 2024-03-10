@@ -2,7 +2,7 @@
 @section('title', 'Manager')
 @section('page_name', 'แดชบอร์ด')
 @section('content')
-    <div class="bg-lightcream h-screen grid grid-cols-2 px-[30px] pt-7">
+    <div class="bg-lightcream h-screen grid grid-cols-2 px-[30px] "> {{-- pt-7 --}} 
         <div class="bg-lightcream px-4 flex flex-col p-4">
             <div class="inline">
                 <h1 class="text-start text-[48px] font-bold text-darkgreen laptop:text-[32px]">ภาพรวม</h1>
@@ -274,7 +274,8 @@
                     <h3 class="text-[30px] text-center font-bold laptop:text-[20px]">เวลายอดนิยม</h3>
                     {{-- barchart --}}
                     <div class="ml-[40px]" style="width: 100%; margin: auto;">
-                        <canvas id="barChart" width="600" height="235"></canvas>
+                        <canvas id="barChart" width="600" height="220"></canvas>
+                        <p class="text-xs text-center">เวลา</p>
                     </div>
                 </div>
             </div>
@@ -367,9 +368,9 @@
                         datasets: [{
                             label: 'จำนวนลูกค้า',
                             data: lengths,
-                            backgroundColor: 'green',
-                            borderColor: 'darkgreen',
-                            borderWidth: 1
+                            backgroundColor: '#0D4F4E',
+                            // borderColor: 'white',
+                            // borderWidth: 1
                         }]
                     },
                     options: {

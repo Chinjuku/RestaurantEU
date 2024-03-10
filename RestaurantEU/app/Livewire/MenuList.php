@@ -50,6 +50,7 @@ class MenuList extends Component
             ->join('category', 'menu.category_id', '=', 'category.category_id')
             ->where('menu_name', 'like', '%' . $this->search . '%')
             ->where('category_name', 'like', '%' . $this->setCategory . '%')
+            ->orderBy('menu.menu_id', 'ASC')
             ->paginate(10);
 
         return view('livewire.menu-list', compact('menus'));

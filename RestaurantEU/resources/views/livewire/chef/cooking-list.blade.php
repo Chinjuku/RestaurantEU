@@ -86,7 +86,7 @@
                                         </svg>
                                     </div>
                                 <div>
-                                    @if($list->order_status === 'in-process')
+                                    @if($list->order_status === 'in-process' || $list->order_status === 'in-queue')
                                     {{-- @if ($settrue == true) --}}
                                     <button wire:click="clickToDone({{$list->order_id}}, {{$list->menu_id}})">
                                         <svg width="40" height="40" class="laptop:w-[55px] laptop:h-[55px] hover:bg-gray-200 duration-300 rounded-[50%]"

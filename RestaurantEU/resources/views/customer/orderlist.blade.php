@@ -122,36 +122,36 @@
                     <!-- allstatus -->
                     <div class="p-[4%]">
                         <!-- status1 -->
-                        <div class="flex mx-auto  justify-center">
+                        <div class="flex mx-auto justify-center items-center">
                             @if ($item->order_status == 'in-queue')
                                 <div class=" p-[4%]"><svg fill="#B93636" width="30px" height="30px"
                                         viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z" />
-                                    </svg></div>
-                                <div class="block py-[1%] px-[4%]">
+                                    </svg>
+                                </div>
+                                <div class="px-[4%]">
                                     <div class="text-[#B93636]">อยู่ในคิว</div>
-                                    <div class="text-[#B93636]">เวลา 20.00 น.</div>
+                                    {{-- <div class="text-[#B93636]">เวลา 20.00 น.</div> --}}
                                 </div>
                             @else
-                                <div class=" p-[4%]"><svg width="30px" height="30px" viewBox="0 0 24 24"
+                                <div class="p-[4%]"><svg width="30px" height="30px" viewBox="0 0 24 24"
                                         id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M24,12a1,1,0,0,1-2,0A10.011,10.011,0,0,0,12,2a1,1,0,0,1,0-2A12.013,12.013,0,0,1,24,12Zm-8,1a1,1,0,0,0,0-2H13.723A2,2,0,0,0,13,10.277V7a1,1,0,0,0-2,0v3.277A1.994,1.994,0,1,0,13.723,13ZM1.827,6.784a1,1,0,1,0,1,1A1,1,0,0,0,1.827,6.784ZM2,12a1,1,0,1,0-1,1A1,1,0,0,0,2,12ZM12,22a1,1,0,1,0,1,1A1,1,0,0,0,12,22ZM4.221,3.207a1,1,0,1,0,1,1A1,1,0,0,0,4.221,3.207ZM7.779.841a1,1,0,1,0,1,1A1,1,0,0,0,7.779.841ZM1.827,15.216a1,1,0,1,0,1,1A1,1,0,0,0,1.827,15.216Zm2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,4.221,18.793Zm3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,7.779,21.159Zm14.394-5.943a1,1,0,1,0,1,1A1,1,0,0,0,22.173,15.216Zm-2.394,3.577a1,1,0,1,0,1,1A1,1,0,0,0,19.779,18.793Zm-3.558,2.366a1,1,0,1,0,1,1A1,1,0,0,0,16.221,21.159Z" />
                                     </svg></div>
                                 <div class="block py-[1%] px-[4%]">
                                     <div class="">อยู่ในคิว</div>
-                                    <div class="">เวลา 20.00 น.</div>
                                 </div>
                             @endif
                         </div>
 
                         <!-- status2 -->
-                        <div class="flex mx-auto justify-center ">
+                        <div class="flex justify-center items-center ">
                             <!-- left -->
                             @if ($item->order_status == 'in-process')
-                                <div class="p-[4%]"><svg width="30px" height="30px" class="stroke-orangee"
+                                <div class="p-[4%] phone:ml-[13%]"><svg width="30px" height="30px" class="stroke-orangee"
                                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" id="Layer_1"
                                         version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -183,12 +183,11 @@
 
                                     </svg></div>
                                 <!-- right -->
-                                <div class="block py-[1%] px-[4%]">
+                                <div class="block py-[1%] px-[4%] phone:mr-[2.5%]">
                                     <div class="text-orangee">เตรียมอาหาร</div>
-                                    <div class="text-orangee">เวลา 20.00 น.</div>
                                 </div>
                             @else
-                                <div class="p-[4%]"><svg width="30px" height="30px" viewBox="0 0 64 64"
+                                <div class="p-[4%] phone:ml-[13%]"><svg width="30px" height="30px" viewBox="0 0 64 64"
                                         enable-background="new 0 0 64 64" id="Layer_1" version="1.1"
                                         xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -220,14 +219,13 @@
 
                                     </svg></div>
                                 <!-- right -->
-                                <div class="block py-[1%] px-[4%]">
+                                <div class="block py-[1%] px-[4%] phone:mr-[2.5%]">
                                     <div>เตรียมอาหาร</div>
-                                    <div>เวลา 20.00 น.</div>
                                 </div>
                             @endif
                         </div>
                         <!-- status3 -->
-                        <div class="flex mx-auto justify-center ">
+                        <div class="flex mx-auto justify-center items-center ">
                             <!-- left -->
                             @if ($item->order_status == 'serving')
                                 <div class="p-[4%]"><svg width="30px" height="30px" viewBox="0 0 64 64"
@@ -251,7 +249,6 @@
                                 <!-- right -->
                                 <div class="block py-[1%] px-[4%]">
                                     <div class="text-yellow-300">รอเสิร์ฟ</div>
-                                    <div class="text-yellow-300">เวลา 20.00 น.</div>
                                 </div>
                             @else
                                 <div class="p-[4%]"><svg width="30px" height="30px" viewBox="0 0 64 64"
@@ -275,13 +272,12 @@
                                 <!-- right -->
                                 <div class="block py-[1%] px-[4%]">
                                     <div>รอเสิร์ฟ</div>
-                                    <div>เวลา 20.00 น.</div>
                                 </div>
                             @endif
                         </div>
 
                         <!-- status4 -->
-                        <div class="flex mx-auto justify-center ">
+                        <div class="flex mx-auto justify-center items-center ">
                             <!-- left -->
                             @if ($item->order_status == 'done')
                                 <div class="p-[4%]">
@@ -296,7 +292,6 @@
                                 <!-- right -->
                                 <div class="block py-[1%] px-[4%]">
                                     <div class="text-green-500">เสร็จสิ้น</div>
-                                    <div class="text-green-500">เวลา 20.00 น.</div>
                                 </div>
                             @else
                                 <div class="p-[4%]">
@@ -311,7 +306,6 @@
                                 <!-- right -->
                                 <div class="block py-[1%] px-[4%]">
                                     <div>เสร็จสิ้น</div>
-                                    <div>เวลา 20.00 น.</div>
                                 </div>
                             @endif
                         </div>

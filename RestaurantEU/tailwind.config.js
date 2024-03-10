@@ -22,11 +22,8 @@ export default {
       'pc': { min: '1520px' } // Desktop widescreen.
     },
   },
-  plugins: [ require('flowbite/plugin'), 
-  // require("daisyui") 
-  ],
+  plugins: [ require('flowbite/plugin') ],
   daisyui: {
     themes: false,
-    // ['light', 'dark']
   },
 }

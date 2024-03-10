@@ -37,9 +37,9 @@
                 <div class="overflow-y-scroll h-[55%] laptop:h-[45%] my-[2%] ">
                     @foreach ($showbill as $index => $item)
                         <div class="flex px-[7%] laptop:px-[5%] text-2xl py-[2.5%]">
-                            <div class="w-[50%]">{{ $index + 1 }} {{ $item->menu_name }}</div>
-                            <div class="w-[15%]">x{{ $item->quantity }} </div>
-                            <div class="w-[35%]">{{ $item->price * $item->quantity }} บาท</div>
+                            <div class="w-[50%]">{{ $item->menu_name }}</div>
+                            <div class="w-[25%]">x{{ $item->quantity }} </div>
+                            <div class="w-[25%] text-right">{{ $item->price * $item->quantity }} บาท</div>
                         </div>
                     @endforeach
                 </div>

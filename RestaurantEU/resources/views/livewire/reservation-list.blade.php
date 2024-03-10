@@ -54,8 +54,8 @@
                     <button 
                         wire:click="deleteReserve({{$item->reserveid}})" 
                         wire:confirm="คุณต้องการลบ {{$item->name}} ใช่ไหม">
-                        <svg width="24" height="24" viewBox="0 0 44 44" fill="yellow" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.3335 12.8333H36.6668" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg width="24" height="24" viewBox="0 0 44 44" fill="#FFECBC" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.3335 12.8333H36.6668" stroke="#FFECBC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M11 18.3333L14.1193 35.4892C14.4363 37.2327 15.9547 38.4999 17.7268 38.4999H26.2731C28.0452 38.4999 29.5638 37.2325 29.8808 35.4892L33 18.3333" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M16.5 9.16667C16.5 7.14162 18.1416 5.5 20.1667 5.5H23.8333C25.8584 5.5 27.5 7.14162 27.5 9.16667V12.8333H16.5V9.16667Z" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>

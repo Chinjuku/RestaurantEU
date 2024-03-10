@@ -1,15 +1,14 @@
 <div class="bg-lightcream flex justify-start items-start my-1 h-full">
     <div class="border border-black rounded-3xl m-10 px-20 py-7 w-full">
         <table class="w-full text-center table-auto min-w-max text-3xl laptop:text-[20px] ">
-            <thead>
+            <thead class="border-y border-y-darkgreen">
                 <tr>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50 mb-2">ลำดับ</th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50 mb-2">รหัสคำสั่ง</th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50 mb-2">ยอดรวม</th>
-                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50 mb-2">วันที่ (ว-ด-ป)</th>
+                    <th class="p-4 bg-blue-gray-50 mb-2">ลำดับ</th>
+                    <th class="p-4 bg-blue-gray-50 mb-2">รหัสคำสั่ง</th>
+                    <th class="p-4 bg-blue-gray-50 mb-2">ยอดรวม</th>
+                    <th class="p-4 bg-blue-gray-50 mb-2">วันที่ (ว-ด-ป)</th>
                 </tr>
             </thead>
-            <hr>
             <tbody>
                 @foreach ($allorder as $index => $item)
                 <tr>

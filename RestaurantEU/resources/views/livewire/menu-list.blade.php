@@ -7,9 +7,9 @@
         <div class="relative z-0 w-[18%] group">
             <select wire:model.live="setCategory" name="category_id" class="text-lightcream py-3 border font-bold text-center bg-darkgreen border-gray-300 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected>เลือกหมวดหมู่</option>
-                <option value="อาหารทานเล่น">อาหารทานเล่น</option>   
+                <option value="อาหารเรียกน้ำย่อย">อาหารเรียกน้ำย่อย</option>   
                 <option value="อาหารจานหลัก">อาหารจานหลัก</option>
-                <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                <option value="เครื่องดื่ม">เครื่องดื่ม/ของหวาน</option>
             </select>
         </div>
         <div class="mb-[25px] scale-[1.2] flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around">
@@ -50,7 +50,7 @@
                                             <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">หมวดหมู่</label>
                                             <select wire:model.live="setTypes" name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>เลือกหมวดหมู่</option>
-                                                <option value="1">อาหารทานเล่น</option>   
+                                                <option value="1">อาหารเรียกน้ำย่อย</option>   
                                                 <option value="2">อาหารจานหลัก</option>
                                                 <option value="3">เครื่องดื่ม/ของหวาน</option>
                                             </select>
@@ -61,8 +61,9 @@
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option selected>เลือกประเภท</option>
                                                     <option value="เมนูเส้น">เมนูเส้น</option>   
-                                                    <option value="ข้าว/อื่นๆ">ข้าว/อื่นๆ</option>
+                                                    <option value="ข้าว">ข้าว</option>
                                                     <option value="สเต๊ก">สเต๊ก</option>
+                                                    <option value="อื่นๆ">อื่นๆ</option>
                                                 </select>
                                             </div>
                                         @elseif ($setTypes == 3)
@@ -72,7 +73,7 @@
                                                     <option selected>เลือกประเภท</option>
                                                     <option value="กาแฟ/ชา">กาแฟ/ชา</option>   
                                                     <option value="ไวน์">ไวน์</option>
-                                                    <option value="อื่นๆ">อื่นๆ</option>
+                                                    <option value="เครื่องดื่มอื่นๆ">เครื่องดื่มอื่นๆ</option>
                                                     <option value="ของหวาน">ของหวาน</option> 
                                                 </select>
                                             </div>
@@ -185,7 +186,7 @@
                                                 <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">หมวดหมู่</label>
                                                 <select wire:model.live="setTypes2" name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option value="{{ $category_id_id }}" selected>{{ $category_id }}</option>
-                                                    <option value="1">อาหารทานเล่น</option>   
+                                                    <option value="1">อาหารเรียกน้ำย่อย</option>   
                                                     <option value="2">อาหารจานหลัก</option>
                                                     <option value="3">เครื่องดื่ม/ของหวาน</option>
                                                 </select>
@@ -196,8 +197,9 @@
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option value="{{ $types }}" selected>{{ $types }}</option>
                                                     <option value="เมนูเส้น">เมนูเส้น</option>   
-                                                    <option value="ข้าว/อื่นๆ">ข้าว/อื่นๆ</option>
+                                                    <option value="ข้าว">ข้าว</option>
                                                     <option value="สเต๊ก">สเต๊ก</option>
+                                                    <option value="อื่นๆ">อื่นๆ</option>
                                                 </select>
                                             </div>
                                             @elseif ( $category_id_id == 3 || $setTypes2 == 3)
@@ -207,7 +209,7 @@
                                                     <option value="{{ $types }}" selected>{{ $types }}</option>
                                                     <option value="กาแฟ/ชา">กาแฟ/ชา</option>   
                                                     <option value="ไวน์">ไวน์</option>
-                                                    <option value="อื่นๆ">อื่นๆ</option>
+                                                    <option value="เครื่องดื่มอื่นๆ">เครื่องดื่มอื่นๆ</option>
                                                     <option value="ของหวาน">ของหวาน</option>                                                    
                                                 </select>
                                             </div>
