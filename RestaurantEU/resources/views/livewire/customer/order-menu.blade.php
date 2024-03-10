@@ -233,7 +233,7 @@
                         </div>
                         <div class="flex justify-evenly w-full">
                             {{-- ปุ่มปิด --}}
-                            <button type="button" wire:click="toggleModal2({{ $menu_id }})" class="bg-none rounded-[32px] tablet:text-[28px] px-7 py-1 mt-2 font-bold text-white">
+                            <button type="button" wire:click="toggleModal2({{ $menu_id }})" class="bg-none border-white border rounded-[32px] tablet:text-[28px] px-7 py-1 mt-2 font-bold text-white">
                                 ยกเลิก
                             </button>
                             <button type="submit" class="bg-lgreen rounded-[32px] px-7 py-1  mt-2 font-bold tablet:text-[28px] text-darkgreen  hover:bg-lightcream duration-700">สั่ง {{ $menu_name }}</button>
