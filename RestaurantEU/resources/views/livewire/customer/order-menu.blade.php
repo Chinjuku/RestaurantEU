@@ -22,7 +22,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">อาหารทานเล่น</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->category_id == 1)
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -32,7 +32,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -45,7 +45,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">เมนูเส้น</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'เมนูเส้น')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -55,7 +55,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -68,7 +68,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">สเต็ก</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'สเต็ก')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -78,7 +78,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -91,7 +91,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">ข้าว/อื่นๆ</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'ข้าว/อื่นๆ')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -101,7 +101,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -114,7 +114,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">ของหวาน</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'ของหวาน')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -124,7 +124,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -137,7 +137,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">กาแฟ/ชา</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'กาแฟ/ชา')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -147,7 +147,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -160,7 +160,7 @@
             class="w-[130px] h-[38px] tablet:w-[180px] tablet:h-[62px] tablet:text-[24px] phone:mb-4 phone:mx-[40px] tablet:mb-7 text-[18px] tablet:p-[10px] drop-shadow-lg bg-white border flex justify-center items-center border-black">
             <p class="font-bold">ไวน์</p>
         </div>
-        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+        <div class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'ไวน์')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -170,7 +170,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
@@ -184,7 +184,7 @@
             <p class="font-bold">อื่นๆ</p>
         </div>
         <div
-            class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-6 gap-7 phone:px-[40px]">
+            class="grid phone:grid-cols-2 largephone:grid-cols-2 tablet:grid-cols-3 phone:gap-[17.5px] gap-7 phone:px-[40px]">
             @foreach ($menus as $item)
                 @if ($item->types == 'อื่นๆ')
                     <button wire:click="toggleModal2({{ $item->menu_id }})"
@@ -194,7 +194,7 @@
                         <div class="phone:w-[24px] h-[5px] tablet:w-[32px] tablet:h-[10px] rounded-xl bg-darkgreen">
                         </div>
                         <div class="text-center">
-                            <h3 class="text-[18px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
+                            <h3 class="text-[16px] tablet:text-[22px] font-bold">{{ $item->menu_name }}</h3>
                             <h5 class="text-[14px] tablet:text-[18px]">{{ $item->price }} บาท</h5>
                         </div>
                     </button>
