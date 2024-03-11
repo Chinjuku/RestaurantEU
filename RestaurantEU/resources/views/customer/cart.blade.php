@@ -18,21 +18,21 @@
     <div class="h-max-full px-[30px] phone:py-[26px] py-[30px] bg-cream w-full flex flex-col gap-5 tablet:text-[24px] tablet:gap-7">
         @if ($orders != null)
             @foreach ($orders as $key => $order)
-                <div class="bg-lightcream flex items-center justify-between px-5 py-5 gap-4 border-2 border-black rounded-2xl">
+                <div class="bg-lightcream flex items-center text-sm justify-between px-5 py-5 gap-3 border-2 border-black rounded-2xl">
                     <input class="bg-transparent border-none" type="hidden" value="{{ $order['menu_ID'] }}">
                     <div>
                         <input class="bg-transparent border-none" type="hidden" value="{{ $order['menu_Name'] }}" readonly>
                         <p>{{ $order['menu_Name'] }}</p>
                         {{-- <p>{{ $tableid }}</p> --}}
                     </div>
-                    <div class="flex mr-3 mt-2 gap-4">
+                    <div class="flex mr-3 mt-3 gap-4">
                         @livewire('customer.count-cart-menu', [
                         'count' => $order['count'],
                         'price' => $order['prices'],
                         'key' => $key,
                         'tableid' => $tableid,
                     ])
-                    <a href="{{ route('customer.table.clearcart', ['id' => $tableid, 'key' => $key]) }}">
+                    <a class="mt-[-4px]" href="{{ route('customer.table.clearcart', ['id' => $tableid, 'key' => $key]) }}">
                         <svg width="40" height="40" viewBox="0 0 1024 1024" class="icon phone:w-[30px] mb-1 phone:h-[30px]" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" fill="#ff0000" class="text-red-600" stroke="#ff0000">
 
@@ -56,28 +56,12 @@
                 </div>
             @endforeach
             <div class="w-full flex justify-center mt-4">
-                <a href="{{ route('customer.table.order', $tableid) }}" class="px-5 py-3 bg-darkgreen text-lightcream rounded-xl">สั่งออเดอร์</a>
+                <a href="{{ route('customer.table.order', $tableid) }}" class="px-5 py-3 bg-darkgreen text-lightcream rounded-xl">สั่งเลย !!</a>
             </div>
         @else
             <div class="flex justify-center pt-8 text-[20px] font-medium tablet:text-[24px] text-darkgreen">
                 <p>ไม่มีรายการอาหารที่คุณเลือกไว้</p>
             </div>
         @endif
-
-
     </div>
-    <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}"
-            switch (type) {
-                case 'success':
-                    toastr.options.timeOut = 7000;
-                    toastr.success("{{ Session::get('message') }}");
-                    var audio = new Audio('audio.mp3');
-                    audio.play();
-
-                    break;
-            }
-        @endif
-    </script>
 @endsection

@@ -12,7 +12,7 @@ export default {
       'lgreen' : '#9EB5A3',
       'cream' : '#D7C2B1',
       'lightcream' : '#FEF6EB',
-      'red' : 'red',
+      'orangee' : '#E38854',
     },
     screens: {
       'phone' : { max: '575px' }, // Mobile (iPhone 3 - iPhone XS Max).
@@ -22,11 +22,8 @@ export default {
       'pc': { min: '1520px' } // Desktop widescreen.
     },
   },
-  plugins: [ require('flowbite/plugin'), 
-  // require("daisyui") 
-  ],
+  plugins: [ require('flowbite/plugin') ],
   daisyui: {
     themes: false,
-    // ['light', 'dark']
   },
 }

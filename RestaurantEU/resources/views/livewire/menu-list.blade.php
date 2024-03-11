@@ -1,15 +1,15 @@
 <div class="show relative" >
-    <div wire:loading class="w-full justify-center flex mt-[-40px] z-[120]">
+    {{-- <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
         @include('loading')
-    </div>
+    </div> --}}
     
     <div class=" flex justify-between items-center h-[120px]">
         <div class="relative z-0 w-[18%] group">
             <select wire:model.live="setCategory" name="category_id" class="text-lightcream py-3 border font-bold text-center bg-darkgreen border-gray-300 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected>เลือกหมวดหมู่</option>
-                <option value="อาหารทานเล่น">อาหารทานเล่น</option>   
+                <option value="อาหารเรียกน้ำย่อย">อาหารเรียกน้ำย่อย</option>   
                 <option value="อาหารจานหลัก">อาหารจานหลัก</option>
-                <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                <option value="เครื่องดื่ม">เครื่องดื่ม/ของหวาน</option>
             </select>
         </div>
         <div class="mb-[25px] scale-[1.2] flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around">
@@ -18,7 +18,7 @@
                 <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </div>
-                <input wire:model.lazy="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-3 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อเมนู">
+                <input wire:model.live="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-3 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อเมนู">
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                                             <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">หมวดหมู่</label>
                                             <select wire:model.live="setTypes" name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>เลือกหมวดหมู่</option>
-                                                <option value="1">อาหารทานเล่น</option>   
+                                                <option value="1">อาหารเรียกน้ำย่อย</option>   
                                                 <option value="2">อาหารจานหลัก</option>
                                                 <option value="3">เครื่องดื่ม/ของหวาน</option>
                                             </select>
@@ -61,8 +61,9 @@
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option selected>เลือกประเภท</option>
                                                     <option value="เมนูเส้น">เมนูเส้น</option>   
-                                                    <option value="ข้าว/อื่นๆ">ข้าว/อื่นๆ</option>
+                                                    <option value="ข้าว">ข้าว</option>
                                                     <option value="สเต๊ก">สเต๊ก</option>
+                                                    <option value="อื่นๆ">อื่นๆ</option>
                                                 </select>
                                             </div>
                                         @elseif ($setTypes == 3)
@@ -72,7 +73,7 @@
                                                     <option selected>เลือกประเภท</option>
                                                     <option value="กาแฟ/ชา">กาแฟ/ชา</option>   
                                                     <option value="ไวน์">ไวน์</option>
-                                                    <option value="อื่นๆ">อื่นๆ</option>
+                                                    <option value="เครื่องดื่มอื่นๆ">เครื่องดื่มอื่นๆ</option>
                                                     <option value="ของหวาน">ของหวาน</option> 
                                                 </select>
                                             </div>
@@ -109,53 +110,53 @@
     </div>
     <table class="bg-transparent w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-gray-700 border-b bg-transparent border-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr class="text-[22px] text-wrap bg-transparent">
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px] w-[130px]">
+            <tr class="text-[18px] pc:text-[26px] text-wrap bg-transparent">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px] w-[130px]">
                     รหัส
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     ชื่อเมนู
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     ราคา
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     หมวดหมู่
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     ประเภท
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     แก้ไข
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     ลบ
                 </th>
             </tr>
         </thead>
         <tbody>
             @forelse ($menus as $item)
-            <tr class="bg-transparent text-wrap text-lg laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-[10px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-transparent text-wrap text-lg pc:text-[20px] laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->menu_id}}
                 </th>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->menu_name}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->price}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     {{$item->category_name}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[5px] pc:py-[12px] laptop:py-[5px]">
                     @if ($item->types == null)
                     {{ "-" }}
                     @else
                     {{$item->types}}
                     @endif
                 </td>
-                <td class="pl-[28px] py-[10px] laptop:py-[8px] laptop:text-center">
+                <td class="pl-[28px] py-[10px] pc:py-[12px] laptop:py-[8px] laptop:text-center">
                     {{-- wire:click="editStudent({{$item->employee_id}})" --}}
                     <button type="button" wire:click="toggleModal2({{$item->menu_id}})"  class="popupButton">
                         <svg width="24" height="24" viewBox="0 0 35 35" fill="none" class="hover:fill-red-600 xmlns="http://www.w3.org/2000/svg">
@@ -185,7 +186,7 @@
                                                 <label for="countries" class="block mb-2 text-xl font-medium text-gray-900 ">หมวดหมู่</label>
                                                 <select wire:model.live="setTypes2" name="category_id" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option value="{{ $category_id_id }}" selected>{{ $category_id }}</option>
-                                                    <option value="1">อาหารทานเล่น</option>   
+                                                    <option value="1">อาหารเรียกน้ำย่อย</option>   
                                                     <option value="2">อาหารจานหลัก</option>
                                                     <option value="3">เครื่องดื่ม/ของหวาน</option>
                                                 </select>
@@ -196,8 +197,9 @@
                                                 <select name="types" class="bg-lightcream border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     <option value="{{ $types }}" selected>{{ $types }}</option>
                                                     <option value="เมนูเส้น">เมนูเส้น</option>   
-                                                    <option value="ข้าว/อื่นๆ">ข้าว/อื่นๆ</option>
+                                                    <option value="ข้าว">ข้าว</option>
                                                     <option value="สเต๊ก">สเต๊ก</option>
+                                                    <option value="อื่นๆ">อื่นๆ</option>
                                                 </select>
                                             </div>
                                             @elseif ( $category_id_id == 3 || $setTypes2 == 3)
@@ -207,7 +209,7 @@
                                                     <option value="{{ $types }}" selected>{{ $types }}</option>
                                                     <option value="กาแฟ/ชา">กาแฟ/ชา</option>   
                                                     <option value="ไวน์">ไวน์</option>
-                                                    <option value="อื่นๆ">อื่นๆ</option>
+                                                    <option value="เครื่องดื่มอื่นๆ">เครื่องดื่มอื่นๆ</option>
                                                     <option value="ของหวาน">ของหวาน</option>                                                    
                                                 </select>
                                             </div>
@@ -241,7 +243,7 @@
                     </div>
                 @endif
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[8px] pc:py-[12px] laptop:py-[8px]">
                     <a href="{{ route('manager.deletemenu', $item->menu_id) }}">
                         <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.3335 12.8333H36.6668" stroke="#B93636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

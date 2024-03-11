@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderListEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +15,14 @@ class ChefController extends Controller
         $changestatus = DB::table('orderdetails')->where('order_id', $orderid and 'table_id', $tableid)->update(['order_status', 'serving']);
         return view('chef/cook', compact('changestatus'));
     }
-    function orderShow(Request $request, $id) {
-        // change order status
-        // DB::table('orderdetails')->where('order_id', $id)->update([
-        //     'order_status' => 'in-process'
-        // ]);
-        DB::table('order')->where('order_id', $id)->update([
-            'status' => 'cooking'
-        ]);
-        // dd($id);
-        return redirect()->route('chef.neworder');
+    function clickDone($id) {
+        DB::table('order')
+            ->where('order_id', $id)
+            ->update(['status' => 'serving']);
+        $notification = array(
+            'message' => 'ทำอาหารเสร็จสิ้น',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('chef.neworder')->with($notification);
     }
 }

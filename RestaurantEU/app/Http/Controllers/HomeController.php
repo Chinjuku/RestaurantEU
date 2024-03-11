@@ -29,19 +29,39 @@ class HomeController extends Controller
     }
     public function managerHome()
     {
-        return view('manager/dashboard');
+        // Get all orders
+        $allorder = DB::table('bill')->join('order', 'bill.order_id', '=', 'order.order_id')->get()->count('order_id');
+        // Allin db
+        $getall = DB::table('bill')->join('order', 'bill.order_id', '=', 'order.order_id')
+            ->join('orderdetails', 'orderdetails.order_id', '=', 'order.order_id')
+            ->join('menu', 'menu.menu_id', '=', 'orderdetails.menu_id')
+            ->get()
+            ->map(function ($time) {
+                $time->formattedOrderTime = Carbon::parse($time->order_time)->locale('th')->format('Y-m-d');
+            return $time; 
+        });
+
+
+        // $totalperday = $weekanddate // current date totalprice
+        //     ->where('formatDate', now())
+        //     ->sum('totalprice');
+        $billprices = DB::table('bill')->get()->sum('totalprice');
+        $popularFoods = DB::table('order')
+            ->join('orderdetails', 'orderdetails.order_id', '=', 'order.order_id')
+            ->join('menu','menu.menu_id', '=', 'orderdetails.menu_id')
+            ->select('orderdetails.menu_id', DB::raw('SUM(orderdetails.quantity) as totalQuantity'), 'menu.menu_name')
+            ->groupBy('orderdetails.menu_id', 'menu.menu_name')
+            ->orderByDesc('totalQuantity')->limit(5)
+            ->get();
+        // dd($totalperday, $getall, $weekanddate, $billprices, $allorder, $popularFoods);
+        return view('manager/dashboard', compact(
+            'allorder', 'billprices', 'popularFoods'
+        ));
     }
 
     public function chefHome()
     {
-        $getorder = DB::table('order')
-            // ->where(status = 'pending' or status = 'cooking')
-            ->get()
-            ->map(function ($order) {
-                $order->formattedOrderTime = Carbon::parse($order->order_time)->locale('th')->format('H:i:s');
-                return $order;
-        });
-        return view('chef/neworder', compact('getorder'));
+        return view('chef/neworder');
     }
 
     public function waiterHome()

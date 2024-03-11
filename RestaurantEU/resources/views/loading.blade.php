@@ -6,6 +6,6 @@
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
-<h1 class="text-[64px] phone:text-[32px] text-darkgreen font-bold" >กำลังโหลด...</h1>
+<h1 class="text-[64px] phone:text-[32px] font-bold" >กำลังโหลด...</h1>
 </div>
 

@@ -1,7 +1,7 @@
 <div class="show relative" >
-    <div wire:loading class="w-full justify-center flex mt-[-40px] z-[120]">
+    {{-- <div wire:loading class="w-full text-darkgreen justify-center flex mt-[-40px] z-[120]">
         @include('loading')
-    </div>
+    </div> --}}
     
     <div class=" flex justify-between items-center h-[120px]">
         <h1 class="text-5xl pb-4 font-bold">พนักงาน</h1>
@@ -11,11 +11,10 @@
                 <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </div>
-                <input wire:model.lazy="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อพนักงาน">
+                <input wire:model.live="search" class="block p-2 ps-10 text-sm text-gray-900 outline-none border-b border-black bg-lightcream w-80 dark:bg-gray-700 focus:border-b-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="ค้นหาชื่อพนักงาน">
             </div>
         </div>
 
-        {{-- <livewire:add-employee /> --}}
         <div>
             <button type="button" wire:click="toggleModal" class="text-white scale-[1.4] bg-darkgreen hover:bg-green-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+ เพิ่มพนักงาน</button>
 
@@ -23,9 +22,6 @@
                 <div id="createEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75">
                     <div class="flex items-center justify-center min-h-screen">
                         <div class="relative z-10 w-full max-w-xl p-6 bg-lightcream rounded-lg shadow-xl">
-                            {{-- <button wire:click="$set('showModal', false)" class="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700 focus:outline-none">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </button> --}}
                             <form action="{{ route('manager.addem') }}" method="POST" class="max-w-sm mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
                                 <h1 class="text-5xl text-center font-bold">เพิ่มพนักงาน</h1>
                                 @csrf
@@ -67,29 +63,29 @@
     </div>
     <table class="bg-transparent w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-gray-700 border-b bg-transparent border-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr class="text-[22px] text-wrap bg-transparent">
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px] w-[130px]">
+            <tr class="text-[22px] pc:text-[26px] text-wrap bg-transparent">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px] w-[130px]">
                     รหัส
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     ชื่อ
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     นามสกุล
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px] max-[1441px]:opacity-0">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px] max-[1441px]:opacity-0">
                     เบอร์โทร
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     ตำแหน่ง
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     วันที่สมัคร
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     แก้ไข
                 </th>
-                <th scope="col" class="px-6 py-[10px] laptop:py-[8px]">
+                <th scope="col" class="px-6 py-[12px] laptop:py-[8px]">
                     ลบ
                 </th>
             </tr>
@@ -97,25 +93,25 @@
         <tbody>
             @forelse ($employees as $item)
             <tr class="bg-transparent text-wrap text-lg laptop:text-md border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-[10px] laptop:py-[8px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-[10px] pc:text-[20px] pc:py-[12px] laptop:py-[6px] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->employee_id}}
                 </th>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->firstname}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->lastname}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px] max-[1441px]:opacity-0">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px] max-[1441px]:opacity-0">
                     {{$item->phone}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->roles}}
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->createdAt}}
                 </td>
-                <td class="pl-[28px] py-[10px] laptop:py-[8px] laptop:text-center">
+                <td class="pl-[28px] py-[10px] pc:py-[12px] laptop:py-[8px] laptop:text-center">
                     {{-- wire:click="editStudent({{$item->employee_id}})" --}}
                     <button type="button" wire:click="toggleModal2({{$item->employee_id}})"  class="popupButton">
                         <svg width="24" height="24" viewBox="0 0 35 35" fill="none" class="hover:fill-red-600 xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +162,7 @@
                     </div>
                 @endif
                 </td>
-                <td class="px-6 py-[10px] laptop:py-[8px]">
+                <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[8px]">
                     <a href="{{ route('manager.deleteem', $item->employee_id) }}">
                         <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.3335 12.8333H36.6668" stroke="#B93636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

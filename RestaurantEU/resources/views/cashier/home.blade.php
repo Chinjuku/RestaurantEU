@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
+@section('page_name', 'cashier')
 @section('content')
-<div class="container">
-    @livewire('reservation-list' , ['lazy' => true])
-</div>
+    @livewire('cashier.bill-list' , ['lazy' => true])
 @endsection
