@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page_name', 'ร้านอาหารสไตล์ยุโรป')
+@section('page_name', 'Besoin Restaurant')
 @section('content')
     <div class="w-full h-screen bg-darkgreen flex justify-center items-center mt-[-70px] ">
         <div class="h-[681px] w-[734px] bg-lightcream rounded-2xl font-extrabold laptop:scale-[0.9] tablet:scale-[0.85] drop-shadow-md text-darkgreen items-center justify-center flex flex-col">

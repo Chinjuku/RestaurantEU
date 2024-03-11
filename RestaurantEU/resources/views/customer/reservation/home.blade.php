@@ -9,8 +9,7 @@
 </head>
 <body class="bg-darkgreen flex justify-center items-center flex-col h-screen">
     <div class="text-lg font-bold text-lightcream">
-        <h1 class="text-center text-[64px] m-10 phone:text-[32px] phone:m-2">Green</h1>
-        <h2 class="text-center text-[64px] phone:text-[32px]">Grove Harvest</h2><br>
+        <h2 class="text-center text-[64px] phone:text-[32px]">Besoin Restaurant</h2><br>
     </div>
         <a href="{{route('reservation.form')}}" class="text-[32px] tracking-wide bg-darkgreen text-lightcream border border-yellow-50 rounded-3xl px-24 mt-2.5 hover:text-darkgreen hover:bg-lightcream hover:transition duration-700 ease-in-out phone:text-[24px]">จองโต๊ะ</a>
 </body>

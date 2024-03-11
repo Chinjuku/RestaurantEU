@@ -45,7 +45,7 @@ class MenuList extends Component
     }
     public function render()
     {
-        sleep(0.5);
+        sleep(0.8);
         $menus = DB::table('menu')
             ->join('category', 'menu.category_id', '=', 'category.category_id')
             ->where('menu_name', 'like', '%' . $this->search . '%')

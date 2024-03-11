@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
-<body class="bg-lightcream grid grid-cols-2 phone:grid phone:grid-cols-1 phone:w-[100%]">
+<body class="bg-lightcream h-screen grid grid-cols-2 pb-5 phone:grid phone:grid-cols-1 phone:w-[100%]">
     <div class="my-24 mx-24 text-3xl flex justify-between flex-col phone:text-xl phone:flex phone:justify-start phone:flex-cols tablet:text-2xl">
         <div class="phone:inline-block">
             <h2 class="mb-4">ติดต่อ : </h2>

@@ -53,7 +53,7 @@ class EmployeeList extends Component
     }
     public function render()
     {
-        sleep(0.5);
+        sleep(0.8);
         $employees = DB::table('employee')->where('firstname', 'like', '%' . $this->search . '%')->paginate(10);
         // $table = DB::table('employee')::search('firstname', $this.search)->paginate(10);
         return view('livewire.employee-list', compact('employees'));
