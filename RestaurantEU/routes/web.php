@@ -52,16 +52,12 @@ Route::group(['middleware' => 'is_chef'], function() {
     Route::get('/chef/orderdone/{id}', [ChefController::class, 'clickDone'])->name('chef.cookingdone');
     Route::get('/chef/orderdone', [ChefController::class, 'orderdone'])->name('chef.orderdone');
 });
-
-
-
 // Waiter
 Route::group(['middleware' => 'is_waiter'], function() {
     Route::get('/waiter/readytoserve', [HomeController::class, 'waiterHome'])->name('waiter.readytoserve');
     Route::get('/waiter/servedone', [WaiterController::class, 'servedone'])->name('waiter.servedone');
     Route::get('/waiter/serve/{id}', [WaiterController::class , 'updateserved' ])->name('waiter.served');
 });
-
 // Cashier
 Route::get('/cashier/home', [HomeController::class, 'cashierHome'])->name('cashier.home')->middleware('is_cashier');
 

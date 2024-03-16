@@ -14,7 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
 <body class="overflow-y-hidden">
     <nav class="bg-darkgreen fixed w-full text-lightcream p-4 h-[70px] flex items-center z-50">

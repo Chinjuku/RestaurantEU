@@ -29,7 +29,6 @@
                             </svg>
                             <p class="text-3xl font-bold ml-3">{{ $billprices }} บาท</p>
                         </div>
-
                     </div>
                     <!--คำสั่งทั้งหมด  -->
                     <div
@@ -255,7 +254,7 @@
                 <div class="ml-[40px]" style="width: 600px; margin: auto;">
                     <canvas id="lineChart" width="600" height="270"></canvas>
                 </div>
-
+                
             </div>
             <div class="flex w-full items-start gap-2">
                 <!-- รายการขายดี -->
@@ -291,23 +290,16 @@
                 return response.json();
             })
             .then(function(data) {
-                console.log(data); // Log the response data to inspect it
-
-                // Check if data is an array before using map
+                console.log(data);
                 var dataArray = Object.keys(data).map(function(key) {
                     return data[key];
                 });
-
-                // Extract labels and values from the data
                 var labels = dataArray.map(function(item) {
                     return item.formatDDDD;
                 });
-
                 var values = dataArray.map(function(item) {
                     return item.totalperday;
                 });
-
-                // Render the chart using Chart.js
                 var ctx = document.getElementById('lineChart').getContext('2d');
                 var lineChart = new Chart(ctx, {
                     type: 'line',
@@ -350,14 +342,11 @@
 
                 // Iterate over the keys of the data object
                 Object.keys(data).forEach(function(key) {
-                    // Check if the value associated with the key is an array
                     if (Array.isArray(data[key])) {
-                        // Store the length of the array in the lengths object
                         lengths[key] = data[key].length;
                     }
                 });
-
-                console.log("Lengths inside keys:", lengths); // Extracts the values as data points
+                console.log("Lengths inside keys:", lengths);
                 console.log(labels);
                 // Render the chart using Chart.js
                 var ctx = document.getElementById('barChart').getContext('2d');

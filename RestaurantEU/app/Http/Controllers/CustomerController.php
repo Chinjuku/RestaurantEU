@@ -37,21 +37,18 @@ class CustomerController extends Controller
     function customerOrder(Request $request, $tableid) {
         date_default_timezone_set('Asia/Bangkok');
         $id = Route::current()->parameter('id');
-        // dd(now());
+
         $cookieData = json_decode(request()->cookie('menu_cookie_' . $tableid), true);
         $getOrderID = DB::table('order')->insertGetId([
             'table_id' => $tableid,
             'order_time' => now(),
             'status' => 'pending'
         ]);
-        // dd($cookieData, $getOrderID);
+
         foreach ($cookieData as $order) {
             DB::table('orderdetails')->insert([
                 'order_id' => $getOrderID,
-                // 'table_id' => $tableid,
                 'menu_id' => $order['menu_ID'],
-                // 'menu_name' => $order['menu_Name'],
-                // 'price' => $order['prices'],
                 'quantity' => $order['count'],
                 'order_status' => 'in-queue'	
             ]);
@@ -62,6 +59,7 @@ class CustomerController extends Controller
             ->where('order_id', $getOrderID)
             ->sum(DB::raw('quantity * price'));
         $total = $totalAmount + $totalAmount*0.07 + $totalAmount*0.1;
+        
         DB::table('bill')->insert([
             'table_id' => $tableid,
             'order_id' => $getOrderID,

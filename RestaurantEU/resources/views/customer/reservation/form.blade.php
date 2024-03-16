@@ -69,9 +69,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
-                
-            
+                </div>            
                 <button type="submit" class="mx-auto mt-3 flex items-center justify-end px-5 py-3 text-[24px] bg-lightcream hover:bg-darkgreen hover:text-lightcream hover:transition duration-400 ease-out tablet:text-l" >ยืนยันการจอง</button>
             </form>
         </div>

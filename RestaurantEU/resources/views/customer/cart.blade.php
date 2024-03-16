@@ -62,6 +62,6 @@
             <div class="flex justify-center pt-8 text-[20px] font-medium tablet:text-[24px] text-darkgreen">
                 <p>ไม่มีรายการอาหารที่คุณเลือกไว้</p>
             </div>
-        @endif
+        @endif  
     </div>
 @endsection

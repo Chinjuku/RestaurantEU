@@ -106,7 +106,20 @@
                     {{$item->phone}}
                 </td>
                 <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
-                    {{$item->roles}}
+                    @if ($item->roles == 'chef') {
+                        <p>เชฟ</p>
+                    }
+                    @elseif ($item->roles == 'cashier') {
+                        <p>แคชเชียร์</p>
+                    }
+                    @elseif ($item->roles == 'manager') {
+                        <p>ผู้จัดการ</p>
+                    }
+                    @elseif ($item->roles == 'waiter') {
+                        <p>พนักงานเสิร์ฟ</p>
+                    }
+                    @endif
+                    {{-- {{$item->roles}} --}}
                 </td>
                 <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
                     {{$item->createdAt}}

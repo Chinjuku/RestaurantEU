@@ -41,7 +41,6 @@ class CountCartMenu extends Component
     // }
     public function increment() {
         $this->count++;
-        // $this->clearCookieIfCountIsZero();
     }
     public function decrement() {
         $this->count--;
