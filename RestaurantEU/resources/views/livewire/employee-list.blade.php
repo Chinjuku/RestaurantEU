@@ -106,18 +106,14 @@
                     {{$item->phone}}
                 </td>
                 <td class="px-6 py-[10px] pc:py-[12px] laptop:py-[6px]">
-                    @if ($item->roles == 'chef') {
-                        <p>เชฟ</p>
-                    }
-                    @elseif ($item->roles == 'cashier') {
-                        <p>แคชเชียร์</p>
-                    }
-                    @elseif ($item->roles == 'manager') {
-                        <p>ผู้จัดการ</p>
-                    }
-                    @elseif ($item->roles == 'waiter') {
-                        <p>พนักงานเสิร์ฟ</p>
-                    }
+                    @if ($item->roles == 'chef')
+                        เชฟ
+                    @elseif ($item->roles == 'cashier')
+                        แคชเชียร์
+                    @elseif ($item->roles == 'manager')
+                        ผู้จัดการ
+                    @elseif ($item->roles == 'waiter')
+                        พนักงานเสิร์ฟ
                     @endif
                     {{-- {{$item->roles}} --}}
                 </td>
@@ -136,8 +132,8 @@
                     <div id="updateEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75">
                         <div class="flex items-center justify-center min-h-screen">
                             <div class="relative z-10 w-full max-w-xl p-6 bg-lightcream rounded-lg shadow-xl">
-                                <form action="{{ route('manager.updateem', $item->employee_id) }}" method="POST" class="max-w-sm mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
-                                    <h1 class="text-5xl text-center font-bold">แก้ไขพนักงาน</h1>
+                                <form action="{{ route('manager.updateem', $employee_id) }}" method="POST" class="max-w-sm mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
+                                    <h1 class="text-4xl text-center font-bold">แก้ไขพนักงานคนที่ {{$employee_id}}</h1>
                                     @csrf
                                     <div class="grid md:grid-cols-2 md:gap-6 gap-4">
                                         <div class="relative z-0 w-full mb-5 group">

@@ -41,11 +41,9 @@ class HomeController extends Controller
             return $time; 
         });
 
-
-        // $totalperday = $weekanddate // current date totalprice
-        //     ->where('formatDate', now())
-        //     ->sum('totalprice');
-        $billprices = DB::table('bill')->get()->sum('totalprice');
+        $billprices = DB::table('bill')
+            ->where('isPaid', 1)
+            ->get()->sum('totalprice');
         $popularFoods = DB::table('order')
             ->join('orderdetails', 'orderdetails.order_id', '=', 'order.order_id')
             ->join('menu','menu.menu_id', '=', 'orderdetails.menu_id')

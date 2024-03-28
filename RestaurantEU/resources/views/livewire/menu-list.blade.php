@@ -9,7 +9,7 @@
                 <option value="" selected>เลือกหมวดหมู่</option>
                 <option value="อาหารเรียกน้ำย่อย">อาหารเรียกน้ำย่อย</option>   
                 <option value="อาหารจานหลัก">อาหารจานหลัก</option>
-                <option value="เครื่องดื่ม">เครื่องดื่ม/ของหวาน</option>
+                <option value="เครื่องดื่ม/ของหวาน">เครื่องดื่ม/ของหวาน</option>
             </select>
         </div>
         <div class="mb-[25px] scale-[1.2] flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-around">
@@ -168,8 +168,8 @@
                     <div id="updateEmployeeModal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75">
                         <div class="flex items-center justify-center min-h-screen">
                             <div class="relative z-10 w-full max-w-[1100px] p-3 bg-lightcream rounded-lg shadow-xl">
-                                <form action="{{ route('manager.updatemenu', $item->menu_id) }}" method="POST" class="max-w-[890px] mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
-                                    <h1 class="text-5xl text-center font-bold">แก้ไขเมนู</h1>
+                                <form action="{{ route('manager.updatemenu', $menu_id) }}" method="POST" class="max-w-[890px] mx-auto py-[50px] text-darkgreen flex flex-col gap-[45px]">
+                                    <h1 class="text-5xl text-center font-bold">แก้ไขเมนูที่ {{$menu_id}}</h1>
                                     @csrf
                                     <div class="flex md:gap-6 gap-8">
                                         <div class="w-1/2">
