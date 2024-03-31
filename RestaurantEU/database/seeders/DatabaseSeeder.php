@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
         // php artisan db:seed ( run this!! )
-            // ReserveSeeder::class
+            ReserveSeeder::class
             // EmployeeSeeder::class
-            TableSeeder::class
+            // TableSeeder::class
             // MenuSeeder::class
         ]);
     }

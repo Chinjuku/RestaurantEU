@@ -4,7 +4,6 @@
 @section('back')
     <div>
         <a href="{{ route('customer.table', $tableid) }}" class="cursor-pointer text-white scale-[1.2]">
-            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="bg-white rounded-[50%] p-1"
                 xmlns="http://www.w3.org/2000/svg">
                 <path

@@ -1,6 +1,5 @@
 <div class=" w-[25%] phone:w-[35%] bg-lightcream rounded-2xl flex items-center justify-center">
     <button type="button" wire:click="decrement">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
         <svg width="12px" height="12px" viewBox="0 -12 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -22,12 +21,7 @@
     <input name="count"
         class="w-[50px] text-center bg-transparent border-none tablet:text-[22px] font-semibold"
         wire:model="count" type="text" value="count">
-    {{-- <p>{{$count}}</p> --}}
     <button type="button" wire:click="increment">
-        <?xml version="1.0" encoding="iso-8859-1"?>
-        <?xml version="1.0" encoding="iso-8859-1"?>
-        <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" width="12px" height="12px" viewBox="0 0 45.402 45.402"
             xml:space="preserve">
